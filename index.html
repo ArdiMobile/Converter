@@ -1,524 +1,843 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Kena Mockup | Premium Device Mockup Generator</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Kena Mockup - Create stunning, professional device mockups instantly. Generate beautiful website previews on iPhone, iPad, MacBook, and more. Free HD downloads.">
+    <meta name="keywords" content="mockup generator, device mockup, website mockup, iPhone mockup, MacBook mockup, screenshot generator, app preview, design tool, website preview, device frame">
+    <meta name="author" content="Kena Mockup">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#8100D1">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kenamockup.com/">
+    <meta property="og:title" content="Kena Mockup - Premium Device Mockup Generator">
+    <meta property="og:description" content="Transform any website into stunning device mockups instantly. iPhone, iPad, MacBook frames. Free HD downloads.">
+    <meta property="og:image" content="https://kenamockup.com/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://kenamockup.com/">
+    <meta name="twitter:title" content="Kena Mockup - Premium Device Mockup Generator">
+    <meta name="twitter:description" content="Transform any website into stunning device mockups instantly. Free HD downloads.">
+    <meta name="twitter:image" content="https://kenamockup.com/og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kenamockup.com/">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Kena Mockup",
+        "url": "https://kenamockup.com",
+        "description": "Premium device mockup generator for websites and apps",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
     }
+    </script>
+    
+    <title>Kena Mockup - Premium Device Mockup Generator | Create Stunning Website Previews</title>
+    
+    <!-- Preload Critical Assets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #8100D1;
+            --secondary: #FF52A0;
+            --accent: #B500B2;
+            --dark: #1a1a2e;
+            --light: #faf6ff;
+            --gradient-main: linear-gradient(135deg, #8100D1 0%, #B500B2 50%, #FF52A0 100%);
+            --gradient-subtle: linear-gradient(135deg, rgba(129,0,209,0.1) 0%, rgba(255,82,160,0.1) 100%);
+        }
 
-    body {
-      background: linear-gradient(135deg, #f5f7fb 0%, #eef2f6 100%);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #0f172a;
-      line-height: 1.5;
-      min-height: 100vh;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* ========== NAVBAR ========== */
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2.5rem;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--light);
+            color: #1a1a2e;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: #0f172a;
-      display: flex;
-      align-items: center;
-      gap: 0.2rem;
-    }
+        /* ===== HEADER / NAVIGATION ===== */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(129,0,209,0.1);
+            padding: 1rem 0;
+        }
 
-    .logo span {
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
 
-    .nav-links a {
-      text-decoration: none;
-      color: #475569;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.2s;
-    }
+        .logo-text {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .nav-links a:hover {
-      color: #6366f1;
-    }
+        .logo-icon {
+            font-size: 2rem;
+        }
 
-    .btn-primary {
-      background: linear-gradient(135deg, #6366f1, #4f46e5);
-      color: white;
-      border: none;
-      padding: 0.7rem 1.8rem;
-      border-radius: 3rem;
-      font-weight: 700;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-decoration: none;
-      box-shadow: 0 8px 20px rgba(99,102,241,0.35);
-      letter-spacing: 0.3px;
-      display: inline-block;
-    }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
 
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #4f46e5, #4338ca);
-      transform: translateY(-2px);
-      box-shadow: 0 15px 25px rgba(99,102,241,0.45);
-    }
+        .nav-menu a {
+            text-decoration: none;
+            color: #4a4a6a;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+        }
 
-    .btn-outline {
-      background: transparent;
-      color: #6366f1;
-      border: 2px solid #6366f1;
-      padding: 0.65rem 1.8rem;
-      border-radius: 3rem;
-      font-weight: 700;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-decoration: none;
-    }
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
 
-    .btn-outline:hover {
-      background: #6366f1;
-      color: white;
-    }
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-main);
+            transition: width 0.3s;
+        }
 
-    /* ========== HERO SECTION ========== */
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-      gap: 3rem;
-    }
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
 
-    .hero-text {
-      flex: 1;
-    }
+        .btn-nav {
+            background: var(--gradient-main);
+            color: white !important;
+            padding: 0.7rem 1.8rem;
+            border-radius: 3rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(129,0,209,0.3);
+        }
 
-    .hero-text h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-      letter-spacing: -1px;
-    }
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(129,0,209,0.4);
+        }
 
-    .hero-text h1 span {
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
 
-    .hero-text p {
-      font-size: 1.2rem;
-      color: #64748b;
-      margin-bottom: 2rem;
-      font-weight: 500;
-    }
+        /* ===== HERO SECTION ===== */
+        .hero {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
 
-    .hero-visual {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      position: relative;
-    }
+        .hero-content {
+            flex: 1;
+        }
 
-    .hero-mockup-preview {
-      position: relative;
-      width: 320px;
-      height: 640px;
-      background: linear-gradient(145deg, #2d3748, #1a202c);
-      border-radius: 40px;
-      padding: 14px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-      transform: rotate(-3deg);
-    }
+        .hero-badge {
+            display: inline-block;
+            background: var(--gradient-subtle);
+            padding: 0.5rem 1.2rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(129,0,209,0.2);
+        }
 
-    .hero-mockup-preview .hero-screen {
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      border-radius: 28px;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-      color: white;
-      font-weight: 800;
-    }
+        .hero-content h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
 
-    .hero-mockup-preview .hero-notch {
-      position: absolute;
-      top: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 28px;
-      background: #1a202c;
-      border-radius: 0 0 18px 18px;
-      z-index: 2;
-    }
+        .hero-content h1 .gradient-text {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    /* Floating devices */
-    .floating-device {
-      position: absolute;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      border-radius: 12px;
-      background: white;
-      padding: 5px;
-    }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #6b6b8a;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
 
-    .floating-device.tablet {
-      width: 180px;
-      height: 240px;
-      top: -40px;
-      right: -30px;
-      transform: rotate(8deg);
-      background: linear-gradient(145deg, #2d3748, #1a202c);
-      border-radius: 16px;
-    }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
 
-    .floating-device.laptop {
-      width: 280px;
-      height: 180px;
-      bottom: -30px;
-      left: -50px;
-      transform: rotate(-5deg);
-      background: linear-gradient(145deg, #2d3748, #1a202c);
-      border-radius: 8px;
-    }
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 3rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
 
-    /* ========== FEATURES SECTION ========== */
-    .section {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
+        .btn-primary {
+            background: var(--gradient-main);
+            color: white;
+            box-shadow: 0 10px 30px rgba(129,0,209,0.3);
+        }
 
-    .section h2 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      letter-spacing: -0.5px;
-    }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(129,0,209,0.45);
+        }
 
-    .section p.subtitle {
-      color: #64748b;
-      font-size: 1.1rem;
-      margin-bottom: 3rem;
-    }
+        .btn-outline {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
 
-    .cards {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
 
-    .card {
-      background: white;
-      padding: 2rem;
-      border-radius: 2rem;
-      width: 280px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-      border: 1px solid rgba(0,0,0,0.05);
-    }
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
 
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 30px 50px rgba(99,102,241,0.15);
-      border-color: rgba(99,102,241,0.2);
-    }
+        .hero-device {
+            position: relative;
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(145deg, #2d2d44, #1a1a2e);
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 30px 60px rgba(129,0,209,0.2);
+        }
 
-    .card .icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
+        .hero-device-screen {
+            background: var(--gradient-main);
+            border-radius: 30px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
 
-    .card h3 {
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      font-size: 1.2rem;
-    }
+        .hero-device-screen .mockup-preview {
+            font-size: 5rem;
+            color: white;
+            opacity: 0.9;
+        }
 
-    .card p {
-      color: #64748b;
-      font-size: 0.9rem;
-    }
+        .hero-device-notch {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 25px;
+            background: #1a1a2e;
+            border-radius: 0 0 18px 18px;
+            z-index: 2;
+        }
 
-    /* ========== GENERATOR SECTION ========== */
-    .generator-section {
-      background: white;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
+        .floating-element {
+            position: absolute;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
 
-    .generator-input {
-      display: flex;
-      gap: 1rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      background: #f1f5f9;
-      padding: 0.5rem;
-      border-radius: 60px;
-    }
+        .float-1 {
+            width: 200px;
+            height: 140px;
+            background: white;
+            top: -20px;
+            right: -40px;
+            transform: rotate(5deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            border: 3px solid var(--primary);
+            border-radius: 1rem;
+        }
 
-    .generator-input input {
-      flex: 1;
-      border: none;
-      padding: 1rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 40px;
-      background: white;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 500;
-      outline: none;
-      border: 2px solid transparent;
-      transition: border-color 0.2s;
-    }
+        .float-2 {
+            width: 160px;
+            height: 200px;
+            background: white;
+            bottom: -30px;
+            left: -30px;
+            transform: rotate(-3deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            border: 3px solid var(--secondary);
+            border-radius: 1rem;
+        }
 
-    .generator-input input:focus {
-      border-color: #6366f1;
-    }
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            padding: 5rem 2rem;
+            background: white;
+        }
 
-    .device-tabs {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
 
-    .device-tab {
-      padding: 0.6rem 1.5rem;
-      border-radius: 2rem;
-      border: 2px solid #e2e8f0;
-      background: white;
-      cursor: pointer;
-      font-weight: 600;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      transition: all 0.2s;
-      font-size: 0.9rem;
-    }
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
 
-    .device-tab.active {
-      background: #6366f1;
-      color: white;
-      border-color: #6366f1;
-    }
+        .section-header p {
+            color: #6b6b8a;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-    .device-tab:hover {
-      border-color: #6366f1;
-    }
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
 
-    canvas {
-      margin-top: 2rem;
-      max-width: 100%;
-      background: #f8fafc;
-      border-radius: 24px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-    }
+        .feature-card {
+            padding: 2rem;
+            border-radius: 2rem;
+            background: var(--light);
+            border: 1px solid rgba(129,0,209,0.1);
+            transition: all 0.3s;
+            text-align: center;
+        }
 
-    #loading {
-      display: none;
-      margin-top: 1rem;
-      font-weight: 600;
-      color: #6366f1;
-      font-size: 1.1rem;
-    }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(129,0,209,0.1);
+            border-color: var(--primary);
+        }
 
-    /* ========== TESTIMONIALS ========== */
-    .testimonial-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 2rem;
-      width: 320px;
-      text-align: left;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-    }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
 
-    .testimonial-card .stars {
-      color: #f59e0b;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
+        .feature-card h3 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
 
-    .testimonial-card p {
-      color: #475569;
-      font-style: italic;
-      margin-bottom: 1rem;
-    }
+        .feature-card p {
+            color: #6b6b8a;
+            font-size: 0.9rem;
+        }
 
-    .testimonial-card .author {
-      font-weight: 700;
-      color: #0f172a;
-    }
+        /* ===== DEVICE CATEGORIES ===== */
+        .categories {
+            padding: 5rem 2rem;
+            background: var(--gradient-subtle);
+        }
 
-    /* ========== FOOTER ========== */
-    footer {
-      background: #0f172a;
-      color: white;
-      text-align: center;
-      padding: 2rem;
-    }
+        .categories-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
 
-    footer p {
-      color: #94a3b8;
-    }
+        .category-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
 
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem 1rem;
-      }
+        .category-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(129,0,209,0.15);
+        }
 
-      .hero-text h1 {
-        font-size: 2.5rem;
-      }
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
 
-      .hero-visual {
-        display: none;
-      }
+        .category-card h3 {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
 
-      .cards {
-        flex-direction: column;
-        align-items: center;
-      }
+        .category-card p {
+            color: #6b6b8a;
+            font-size: 0.9rem;
+        }
 
-      .generator-input {
-        flex-direction: column;
-        border-radius: 20px;
-        padding: 0.8rem;
-      }
-    }
-  </style>
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .testimonials-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(129,0,209,0.1);
+        }
+
+        .stars {
+            color: #f59e0b;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p {
+            color: #4a4a6a;
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta {
+            padding: 5rem 2rem;
+            background: var(--gradient-main);
+            text-align: center;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .cta .btn:hover {
+            background: rgba(255,255,255,0.9);
+            transform: translateY(-3px);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #a0a0c0;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #a0a0c0;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 3rem 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                max-width: 100%;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ========== NAVIGATION ========== -->
-  <nav class="navbar">
-    <div class="logo">Kena<span>Mockup</span></div>
-    <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#generator">Generator</a>
-      <a href="#testimonials">Reviews</a>
-      <a href="#generator" class="btn-primary">Get Started</a>
-    </div>
-  </nav>
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">Kena Mockup</span>
+            </a>
+            
+            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="/">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#categories">Devices</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="generate.html" class="btn-nav">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- ========== HERO ========== -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Create <span>Stunning</span> Device Mockups Instantly</h1>
-      <p>Transform any website into beautiful, professional-grade device mockups. Perfect for designers, developers, and marketers.</p>
-      <div style="display:flex;gap:1rem;">
-        <a href="https://yasing.up.railway.app/generate.html" class="btn-primary">Generate Mockup</a>
-        <a href="#features" class="btn-outline">Learn More</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-mockup-preview">
-        <div class="hero-notch"></div>
-        <div class="hero-screen">📱</div>
-      </div>
-      <div class="floating-device tablet" style="background:#6366f1;display:flex;align-items:center;justify-content:center;font-size:2rem;">📲</div>
-      <div class="floating-device laptop" style="background:#4f46e5;display:flex;align-items:center;justify-content:center;font-size:2rem;">💻</div>
-    </div>
-  </section>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">✨ #1 Mockup Generator</span>
+            <h1>Create <span class="gradient-text">Stunning</span> Device Mockups</h1>
+            <p>Transform any website into beautiful, professional mockups on iPhone, iPad, MacBook & more. Perfect for designers, developers & marketers.</p>
+            <div class="hero-buttons">
+                <a href="generate.html" class="btn btn-primary">Start Generating</a>
+                <a href="#features" class="btn btn-outline">Explore Features</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-device">
+                <div class="hero-device-notch"></div>
+                <div class="hero-device-screen">
+                    <span class="mockup-preview">📱</span>
+                </div>
+            </div>
+            <div class="floating-element float-1">💻</div>
+            <div class="floating-element float-2">📲</div>
+        </div>
+    </section>
 
-  <!-- ========== FEATURES ========== -->
-  <section class="section" id="features">
-    <h2>Why Choose Kena Mockup?</h2>
-    <p class="subtitle">Everything you need to create professional mockups in seconds</p>
-    <div class="cards">
-      <div class="card">
-        <div class="icon">⚡</div>
-        <h3>Instant Generation</h3>
-        <p>Enter any URL and get beautiful mockups in seconds. No design skills needed.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🎨</div>
-        <h3>Realistic Frames</h3>
-        <p>High-quality device frames for iPhone, iPad, MacBook, and more.</p>
-      </div>
-      <div class="card">
-        <div class="icon">💎</div>
-        <h3>HD Downloads</h3>
-        <p>Export your mockups in high resolution, ready for presentations and portfolios.</p>
-      </div>
-      <div class="card">
-        <div class="icon">🔄</div>
-        <h3>Multiple Layouts</h3>
-        <p>Single device, multi-angle, and multi-screen layouts for any scenario.</p>
-      </div>
-    </div>
-  </section>
+    <!-- ===== FEATURES ===== -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Why Choose Kena Mockup?</h2>
+            <p>Professional-grade mockup generator with everything you need</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Generation</h3>
+                <p>Enter any URL and get beautiful mockups in seconds</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Realistic Frames</h3>
+                <p>High-quality device frames with realistic shadows & details</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💎</div>
+                <h3>HD Downloads</h3>
+                <p>Export in high resolution, perfect for presentations</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Multiple Layouts</h3>
+                <p>Single, multi-angle & multi-screen layouts available</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Custom Frames</h3>
+                <p>Choose colors, adjust zoom & rotation angles</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Lightning Fast</h3>
+                <p>Optimized for speed with smart caching</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- ========== TESTIMONIALS ========== -->
-  <section class="section" id="testimonials">
-    <h2>Loved by Creators</h2>
-    <p class="subtitle">Join thousands of happy designers and developers</p>
-    <div class="cards">
-      <div class="testimonial-card">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p>"Kena Mockup saved me hours of work. The mockups look incredibly professional!"</p>
-        <div class="author">- Sarah J., UX Designer</div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p>"I use this for all my client presentations. The realistic frames make a huge difference."</p>
-        <div class="author">- Mark T., Developer</div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p>"Super fast and easy to use. The multi-device layouts are a game changer!"</p>
-        <div class="author">- Lisa M., Product Manager</div>
-      </div>
-    </div>
-  </section>
+    <!-- ===== DEVICE CATEGORIES ===== -->
+    <section class="categories" id="categories">
+        <div class="section-header">
+            <h2>Supported Device Categories</h2>
+            <p>Choose from our extensive collection of device frames</p>
+        </div>
+        <div class="categories-grid">
+            <a href="generate.html#mobile" class="category-card">
+                <div class="category-icon">📱</div>
+                <h3>Mobile Devices</h3>
+                <p>iPhone 15 Pro, Google Pixel 8 & more</p>
+            </a>
+            <a href="generate.html#tablet" class="category-card">
+                <div class="category-icon">📲</div>
+                <h3>Tablets</h3>
+                <p>iPad Pro, Galaxy Tab & more</p>
+            </a>
+            <a href="generate.html#laptop" class="category-card">
+                <div class="category-icon">💻</div>
+                <h3>Laptops</h3>
+                <p>MacBook Air, Dell XPS & more</p>
+            </a>
+            <a href="generate.html#desktop" class="category-card">
+                <div class="category-icon">🖥️</div>
+                <h3>Desktops</h3>
+                <p>Studio Display, iMac & more</p>
+            </a>
+            <a href="generate.html#multi" class="category-card">
+                <div class="category-icon">🔄</div>
+                <h3>Multi-Device</h3>
+                <p>Combine multiple devices in one mockup</p>
+            </a>
+        </div>
+    </section>
 
-  <!-- ========== FOOTER ========== -->
-  <footer>
-    <h2 style="margin-bottom:0.5rem;">Kena<span style="color:#6366f1;">Mockup</span></h2>
-    <p>© 2026 Kena Mockup. All rights reserved.</p>
-  </footer>
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header">
+            <h2>Loved by Creators Worldwide</h2>
+            <p>Join thousands of happy designers, developers & marketers</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Kena Mockup saved me hours of work. The mockups look incredibly professional and my clients love them!"</p>
+                <div class="testimonial-author">- Sarah Johnson, UX Designer</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"I use this for all my client presentations. The realistic frames make a huge difference in how my work is perceived."</p>
+                <div class="testimonial-author">- Mark Thompson, Developer</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Super fast and easy to use. The multi-device layouts are a game changer for my portfolio presentations!"</p>
+                <div class="testimonial-author">- Lisa Chen, Product Manager</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta">
+        <h2>Ready to Create Amazing Mockups?</h2>
+        <p>Start generating professional device mockups in seconds. No design skills required.</p>
+        <a href="generate.html" class="btn btn-primary">Get Started Free</a>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Kena Mockup</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="generate.html">Generator</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#categories">Devices</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Devices</h4>
+                <ul>
+                    <li><a href="generate.html#mobile">Mobile Mockups</a></li>
+                    <li><a href="generate.html#tablet">Tablet Mockups</a></li>
+                    <li><a href="generate.html#laptop">Laptop Mockups</a></li>
+                    <li><a href="generate.html#desktop">Desktop Mockups</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">API</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Kena Mockup. All rights reserved. Made with ❤️ for creators.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
