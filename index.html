@@ -4,53 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Kena Mockup - Create stunning, professional device mockups instantly. Generate beautiful website previews on iPhone, iPad, MacBook, and more. Free HD downloads.">
-    <meta name="keywords" content="mockup generator, device mockup, website mockup, iPhone mockup, MacBook mockup, screenshot generator, app preview, design tool, website preview, device frame">
-    <meta name="author" content="Kena Mockup">
-    <meta name="robots" content="index, follow">
+    <meta name="description" content="Multi Device Website Mockup Generator - Preview your website on Apple iMac, MacBook, iPad and iPhone. Drag, resize & customize device mockups instantly.">
+    <meta name="keywords" content="multi device mockup, website mockup generator, Apple mockup, iMac mockup, MacBook mockup, iPad mockup, iPhone mockup, responsive design tester">
     <meta name="theme-color" content="#8100D1">
     
-    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://kenamockup.com/">
-    <meta property="og:title" content="Kena Mockup - Premium Device Mockup Generator">
-    <meta property="og:description" content="Transform any website into stunning device mockups instantly. iPhone, iPad, MacBook frames. Free HD downloads.">
-    <meta property="og:image" content="https://kenamockup.com/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:title" content="Multi Device Website Mockup Generator - Kena Mockup">
+    <meta property="og:description" content="Preview your website on Apple devices. Drag, resize & customize mockups. Free online tool for developers & designers.">
     
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://kenamockup.com/">
-    <meta name="twitter:title" content="Kena Mockup - Premium Device Mockup Generator">
-    <meta name="twitter:description" content="Transform any website into stunning device mockups instantly. Free HD downloads.">
-    <meta name="twitter:image" content="https://kenamockup.com/og-image.png">
+    <title>Multi Device Website Mockup Generator - Kena Mockup</title>
     
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://kenamockup.com/">
-    
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Kena Mockup",
-        "url": "https://kenamockup.com",
-        "description": "Premium device mockup generator for websites and apps",
-        "applicationCategory": "DesignApplication",
-        "operatingSystem": "Web",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        }
-    }
-    </script>
-    
-    <title>Kena Mockup - Premium Device Mockup Generator | Create Stunning Website Previews</title>
-    
-    <!-- Preload Critical Assets -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -63,569 +26,316 @@
             --dark: #1a1a2e;
             --light: #faf6ff;
             --gradient-main: linear-gradient(135deg, #8100D1 0%, #B500B2 50%, #FF52A0 100%);
-            --gradient-subtle: linear-gradient(135deg, rgba(129,0,209,0.1) 0%, rgba(255,82,160,0.1) 100%);
+            --shadow-sm: 0 2px 8px rgba(129,0,209,0.08);
+            --shadow-md: 0 8px 30px rgba(129,0,209,0.12);
+            --shadow-lg: 0 20px 60px rgba(129,0,209,0.2);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: var(--light);
+            background: #f5f0ff;
             color: #1a1a2e;
-            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
             overflow-x: hidden;
         }
 
-        /* ===== HEADER / NAVIGATION ===== */
+        /* ===== HEADER ===== */
         .header {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(129,0,209,0.08);
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(129,0,209,0.1);
-            padding: 1rem 0;
         }
 
-        .nav-container {
-            max-width: 1300px;
+        .header-inner {
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .logo-text {
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .logo-icon {
-            font-size: 2rem;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #4a4a6a;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .nav-menu a:hover {
-            color: var(--primary);
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient-main);
-            transition: width 0.3s;
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        .btn-nav {
-            background: var(--gradient-main);
-            color: white !important;
-            padding: 0.7rem 1.8rem;
-            border-radius: 3rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s;
-            box-shadow: 0 8px 25px rgba(129,0,209,0.3);
-        }
-
-        .btn-nav:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(129,0,209,0.4);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--dark);
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 5rem 2rem;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
-
-        .hero-content {
-            flex: 1;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: var(--gradient-subtle);
-            padding: 0.5rem 1.2rem;
-            border-radius: 3rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(129,0,209,0.2);
-        }
-
-        .hero-content h1 {
-            font-size: 3.8rem;
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
-
-        .hero-content h1 .gradient-text {
-            background: var(--gradient-main);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            color: #6b6b8a;
-            margin-bottom: 2rem;
-            max-width: 500px;
-        }
-
-        .hero-buttons {
-            display: flex;
+            flex-wrap: wrap;
             gap: 1rem;
         }
 
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 3rem;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-decoration: none;
-            transition: all 0.3s;
+        }
+
+        .url-input-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            background: white;
+            padding: 0.4rem;
+            border-radius: 3rem;
+            box-shadow: var(--shadow-sm);
+            border: 2px solid #f0e8ff;
+        }
+
+        .url-input-group input {
+            border: none;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 500;
+            outline: none;
+            border-radius: 2rem;
+            min-width: 280px;
+            background: transparent;
+        }
+
+        .url-input-group input:focus {
+            box-shadow: 0 0 0 3px rgba(129,0,209,0.1);
+        }
+
+        .btn {
+            padding: 0.6rem 1.4rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
             border: none;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s;
+            white-space: nowrap;
         }
 
-        .btn-primary {
+        .btn-generate {
             background: var(--gradient-main);
             color: white;
-            box-shadow: 0 10px 30px rgba(129,0,209,0.3);
+            box-shadow: 0 4px 15px rgba(129,0,209,0.3);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(129,0,209,0.45);
+        .btn-generate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(129,0,209,0.4);
         }
 
         .btn-outline {
             background: white;
             color: var(--primary);
-            border: 2px solid var(--primary);
+            border: 2px solid rgba(129,0,209,0.2);
         }
 
         .btn-outline:hover {
-            background: var(--primary);
+            border-color: var(--primary);
+            background: #faf8ff;
+        }
+
+        /* ===== TOOLBAR ===== */
+        .toolbar {
+            max-width: 1400px;
+            margin: 1rem auto 0;
+            padding: 0 2rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .tool-group {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tool-group label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #8b8baa;
+            white-space: nowrap;
+        }
+
+        .tool-group input[type="range"] {
+            accent-color: var(--primary);
+            width: 80px;
+        }
+
+        .tool-group input[type="color"] {
+            width: 28px;
+            height: 28px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .tool-group select {
+            padding: 0.3rem 0.6rem;
+            border-radius: 1rem;
+            border: 2px solid #f0e8ff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            outline: none;
+        }
+
+        .device-toggles {
+            display: flex;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .device-toggle {
+            padding: 0.4rem 0.9rem;
+            border-radius: 2rem;
+            border: 2px solid #f0e8ff;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.75rem;
+            transition: all 0.3s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .device-toggle.active {
+            background: var(--gradient-main);
             color: white;
+            border-color: transparent;
+        }
+
+        .device-toggle:hover:not(.active) {
             border-color: var(--primary);
         }
 
-        .hero-visual {
+        /* ===== CANVAS AREA ===== */
+        .canvas-container {
             flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             position: relative;
+            margin: 1rem;
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            min-height: 600px;
+            cursor: default;
+            border: 1px solid rgba(129,0,209,0.06);
         }
 
-        .hero-device {
-            position: relative;
-            width: 300px;
-            height: 600px;
-            background: linear-gradient(145deg, #2d2d44, #1a1a2e);
-            border-radius: 40px;
-            padding: 12px;
-            box-shadow: 0 30px 60px rgba(129,0,209,0.2);
-        }
-
-        .hero-device-screen {
-            background: var(--gradient-main);
-            border-radius: 30px;
+        canvas {
+            display: block;
             width: 100%;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .hero-device-screen .mockup-preview {
-            font-size: 5rem;
-            color: white;
-            opacity: 0.9;
-        }
-
-        .hero-device-notch {
             position: absolute;
-            top: 12px;
+            top: 0;
+            left: 0;
+        }
+
+        #loading {
+            display: none;
+            position: absolute;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            width: 90px;
-            height: 25px;
-            background: #1a1a2e;
-            border-radius: 0 0 18px 18px;
-            z-index: 2;
-        }
-
-        .floating-element {
-            position: absolute;
-            border-radius: 1rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .float-1 {
-            width: 200px;
-            height: 140px;
-            background: white;
-            top: -20px;
-            right: -40px;
-            transform: rotate(5deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            border: 3px solid var(--primary);
-            border-radius: 1rem;
-        }
-
-        .float-2 {
-            width: 160px;
-            height: 200px;
-            background: white;
-            bottom: -30px;
-            left: -30px;
-            transform: rotate(-3deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            border: 3px solid var(--secondary);
-            border-radius: 1rem;
-        }
-
-        /* ===== FEATURES SECTION ===== */
-        .features {
-            padding: 5rem 2rem;
-            background: white;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            color: #6b6b8a;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .features-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            padding: 2rem;
-            border-radius: 2rem;
-            background: var(--light);
-            border: 1px solid rgba(129,0,209,0.1);
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(129,0,209,0.1);
-            border-color: var(--primary);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
+            transform: translate(-50%, -50%);
             font-weight: 700;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .feature-card p {
-            color: #6b6b8a;
-            font-size: 0.9rem;
-        }
-
-        /* ===== DEVICE CATEGORIES ===== */
-        .categories {
-            padding: 5rem 2rem;
-            background: var(--gradient-subtle);
-        }
-
-        .categories-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .category-card {
-            background: white;
-            border-radius: 2rem;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .category-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(129,0,209,0.15);
-        }
-
-        .category-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-
-        .category-card h3 {
-            font-weight: 700;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .category-card p {
-            color: #6b6b8a;
-            font-size: 0.9rem;
-        }
-
-        /* ===== TESTIMONIALS ===== */
-        .testimonials {
-            padding: 5rem 2rem;
-            background: white;
-        }
-
-        .testimonials-grid {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 2rem;
-            border: 1px solid rgba(129,0,209,0.1);
-        }
-
-        .stars {
-            color: #f59e0b;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-card p {
-            color: #4a4a6a;
-            font-style: italic;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        /* ===== CTA SECTION ===== */
-        .cta {
-            padding: 5rem 2rem;
-            background: var(--gradient-main);
-            text-align: center;
-            color: white;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .cta p {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta .btn {
-            background: white;
             color: var(--primary);
             font-size: 1.1rem;
+            background: rgba(255,255,255,0.9);
+            padding: 1rem 2rem;
+            border-radius: 2rem;
+            z-index: 10;
+            box-shadow: var(--shadow-md);
         }
 
-        .cta .btn:hover {
-            background: rgba(255,255,255,0.9);
-            transform: translateY(-3px);
+        .empty-hint {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #b8b8d0;
+            pointer-events: none;
+        }
+
+        .empty-hint .icon {
+            font-size: 4rem;
+        }
+
+        /* ===== TIPS SECTION ===== */
+        .tips-section {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1.2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(129,0,209,0.06);
+        }
+
+        .tip-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .tip-card p {
+            font-size: 0.85rem;
+            color: #6b6b8a;
+            line-height: 1.5;
         }
 
         /* ===== FOOTER ===== */
         .footer {
             background: var(--dark);
-            color: white;
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-        }
-
-        .footer-col h4 {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: white;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-col ul li a {
             color: #a0a0c0;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--secondary);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
             text-align: center;
-            color: #a0a0c0;
-            font-size: 0.9rem;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+            margin-top: auto;
         }
 
-        /* Mobile Menu */
+        .footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
+            .header-inner {
                 flex-direction: column;
-                padding: 2rem;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                align-items: stretch;
             }
-
-            .nav-menu.active {
-                display: flex;
+            .url-input-group {
+                flex-wrap: wrap;
             }
-
-            .mobile-menu-btn {
-                display: block;
+            .url-input-group input {
+                min-width: auto;
+                flex: 1;
             }
-
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 3rem 1rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                max-width: 100%;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-visual {
-                display: none;
+            .canvas-container {
+                min-height: 400px;
+                margin: 0.5rem;
             }
         }
     </style>
@@ -634,210 +344,600 @@
 
     <!-- ===== HEADER ===== -->
     <header class="header">
-        <nav class="nav-container">
-            <a href="/" class="logo">
-                <span class="logo-icon">◆</span>
-                <span class="logo-text">Kena Mockup</span>
-            </a>
-            
-            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
-            
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="/">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#categories">Devices</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="generate.html" class="btn-nav">Get Started</a></li>
-            </ul>
-        </nav>
+        <div class="header-inner">
+            <a href="/" class="logo">◆ Kena Mockup</a>
+            <div class="url-input-group">
+                <input type="text" id="urlInput" placeholder="Enter website URL (e.g., apple.com)" value="yasing.com.et">
+                <button class="btn btn-generate" onclick="generateMockup()">⚡ Generate Mockup</button>
+            </div>
+            <div style="display:flex;gap:0.5rem;">
+                <button class="btn btn-outline" onclick="resetDevices()">↺ Reset Positions</button>
+                <button class="btn btn-outline" onclick="downloadMockup()">⬇ Download</button>
+            </div>
+        </div>
     </header>
 
-    <!-- ===== HERO ===== -->
-    <section class="hero">
-        <div class="hero-content">
-            <span class="hero-badge">✨ #1 Mockup Generator</span>
-            <h1>Create <span class="gradient-text">Stunning</span> Device Mockups</h1>
-            <p>Transform any website into beautiful, professional mockups on iPhone, iPad, MacBook & more. Perfect for designers, developers & marketers.</p>
-            <div class="hero-buttons">
-                <a href="generate.html" class="btn btn-primary">Start Generating</a>
-                <a href="#features" class="btn btn-outline">Explore Features</a>
-            </div>
+    <!-- ===== TOOLBAR ===== -->
+    <div class="toolbar">
+        <div class="device-toggles" id="deviceToggles">
+            <button class="device-toggle active" data-device="imac">🖥️ iMac</button>
+            <button class="device-toggle active" data-device="macbook">💻 MacBook</button>
+            <button class="device-toggle active" data-device="ipad">📲 iPad</button>
+            <button class="device-toggle active" data-device="iphone">📱 iPhone</button>
         </div>
-        <div class="hero-visual">
-            <div class="hero-device">
-                <div class="hero-device-notch"></div>
-                <div class="hero-device-screen">
-                    <span class="mockup-preview"><img src="https://img.magnific.com/premium-vector/cheerful-woman-holding-welcome-sign-smiling-while-standing-you-are-welcome-flat-graphic-vector-illustration-isolated-white-background_697837-237.jpg?semt=ais_hybrid&w=740&q=80"></span>
-                </div>
-            </div>
-            <div class="floating-element float-1"><img src="https://img.magnific.com/premium-vector/cheerful-woman-holding-welcome-sign-smiling-while-standing-you-are-welcome-flat-graphic-vector-illustration-isolated-white-background_697837-237.jpg?semt=ais_hybrid&w=740&q=80"></div>
-            <div class="floating-element float-2"><img src="https://img.magnific.com/premium-vector/cheerful-woman-holding-welcome-sign-smiling-while-standing-you-are-welcome-flat-graphic-vector-illustration-isolated-white-background_697837-237.jpg?semt=ais_hybrid&w=740&q=80"></div>
+        <div class="tool-group">
+            <label>🎨 BG</label>
+            <input type="color" id="bgColor" value="#f5f0ff" onchange="updateCanvas()">
         </div>
-    </section>
+        <div class="tool-group">
+            <label>📐 Perspective</label>
+            <input type="range" id="perspectiveRange" min="0" max="30" value="10" oninput="updateCanvas()">
+        </div>
+        <div class="tool-group">
+            <label>📏 Scale</label>
+            <input type="range" id="globalScale" min="0.5" max="1.5" step="0.05" value="1" oninput="updateCanvas()">
+        </div>
+        <div class="tool-group">
+            <label>💡 Shadow</label>
+            <input type="range" id="shadowRange" min="0" max="40" value="20" oninput="updateCanvas()">
+        </div>
+    </div>
 
-    <!-- ===== FEATURES ===== -->
-    <section class="features" id="features">
-        <div class="section-header">
-            <h2>Why Choose Kena Mockup?</h2>
-            <p>Professional-grade mockup generator with everything you need</p>
+    <!-- ===== CANVAS ===== -->
+    <div class="canvas-container" id="canvasContainer">
+        <canvas id="mainCanvas"></canvas>
+        <div id="loading">⏳ Generating screenshots...</div>
+        <div class="empty-hint" id="emptyHint">
+            <div class="icon">🖥️</div>
+            <p>Enter a URL and click Generate</p>
         </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Instant Generation</h3>
-                <p>Enter any URL and get beautiful mockups in seconds</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <h3>Realistic Frames</h3>
-                <p>High-quality device frames with realistic shadows & details</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💎</div>
-                <h3>HD Downloads</h3>
-                <p>Export in high resolution, perfect for presentations</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔄</div>
-                <h3>Multiple Layouts</h3>
-                <p>Single, multi-angle & multi-screen layouts available</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h3>Custom Frames</h3>
-                <p>Choose colors, adjust zoom & rotation angles</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🚀</div>
-                <h3>Lightning Fast</h3>
-                <p>Optimized for speed with smart caching</p>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <!-- ===== DEVICE CATEGORIES ===== -->
-    <section class="categories" id="categories">
-        <div class="section-header">
-            <h2>Supported Device Categories</h2>
-            <p>Choose from our extensive collection of device frames</p>
-        </div>
-        <div class="categories-grid">
-            <a href="generate.html#mobile" class="category-card">
-                <div class="category-icon">📱</div>
-                <h3>Mobile Devices</h3>
-                <p>iPhone 15 Pro, Google Pixel 8 & more</p>
-            </a>
-            <a href="generate.html#tablet" class="category-card">
-                <div class="category-icon">📲</div>
-                <h3>Tablets</h3>
-                <p>iPad Pro, Galaxy Tab & more</p>
-            </a>
-            <a href="generate.html#laptop" class="category-card">
-                <div class="category-icon">💻</div>
-                <h3>Laptops</h3>
-                <p>MacBook Air, Dell XPS & more</p>
-            </a>
-            <a href="generate.html#desktop" class="category-card">
-                <div class="category-icon">🖥️</div>
-                <h3>Desktops</h3>
-                <p>Studio Display, iMac & more</p>
-            </a>
-            <a href="generate.html#multi" class="category-card">
-                <div class="category-icon">🔄</div>
-                <h3>Multi-Device</h3>
-                <p>Combine multiple devices in one mockup</p>
-            </a>
-        </div>
-    </section>
-
-    <!-- ===== TESTIMONIALS ===== -->
-    <section class="testimonials" id="testimonials">
-        <div class="section-header">
-            <h2>Loved by Creators Worldwide</h2>
-            <p>Join thousands of happy designers, developers & marketers</p>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"Kena Mockup saved me hours of work. The mockups look incredibly professional and my clients love them!"</p>
-                <div class="testimonial-author">- Sarah Johnson, UX Designer</div>
+    <!-- ===== TIPS ===== -->
+    <div class="tips-section">
+        <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:1rem;">📝 Tips & Features</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h3>🖱️ Drag & Drop</h3>
+                <p>Click and drag any device to reposition it on the canvas. Create your perfect layout!</p>
             </div>
-            <div class="testimonial-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"I use this for all my client presentations. The realistic frames make a huge difference in how my work is perceived."</p>
-                <div class="testimonial-author">- Mark Thompson, Developer</div>
+            <div class="tip-card">
+                <h3>👁️ Show/Hide Devices</h3>
+                <p>Use the toggle buttons above to show or hide specific devices from your mockup.</p>
             </div>
-            <div class="testimonial-card">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"Super fast and easy to use. The multi-device layouts are a game changer for my portfolio presentations!"</p>
-                <div class="testimonial-author">- Lisa Chen, Product Manager</div>
+            <div class="tip-card">
+                <h3>🎨 Customize Background</h3>
+                <p>Change the background color to match your brand or presentation style.</p>
+            </div>
+            <div class="tip-card">
+                <h3>📐 Adjust Perspective</h3>
+                <p>Use the perspective slider to add depth and dimension to your mockup layout.</p>
+            </div>
+            <div class="tip-card">
+                <h3>⬇️ Download</h3>
+                <p>Once satisfied, click Download to save your mockup as a high-quality PNG image.</p>
+            </div>
+            <div class="tip-card">
+                <h3>🔗 URL Parameter</h3>
+                <p>You can also use: <code>?url=https://example.com</code> to auto-generate mockups.</p>
             </div>
         </div>
-    </section>
-
-    <!-- ===== CTA ===== -->
-    <section class="cta">
-        <h2>Ready to Create Amazing Mockups?</h2>
-        <p>Start generating professional device mockups in seconds. No design skills required.</p>
-        <a href="generate.html" class="btn btn-primary">Get Started Free</a>
-    </section>
+    </div>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Kena Mockup</h4>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="generate.html">Generator</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#categories">Devices</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Devices</h4>
-                <ul>
-                    <li><a href="generate.html#mobile">Mobile Mockups</a></li>
-                    <li><a href="generate.html#tablet">Tablet Mockups</a></li>
-                    <li><a href="generate.html#laptop">Laptop Mockups</a></li>
-                    <li><a href="generate.html#desktop">Desktop Mockups</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">API</a></li>
-                    <li><a href="#">Support</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2026 Kena Mockup. All rights reserved. Made with ❤️ for creators.</p>
-        </div>
+        <p>© 2026 <a href="/">Kena Mockup</a> - Multi Device Website Mockup Generator. All rights reserved. | Brand names belong to respective owners.</p>
     </footer>
 
     <script>
-        function toggleMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
-        }
-        
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navMenu').classList.remove('active');
+        const canvas = document.getElementById('mainCanvas');
+        const ctx = canvas.getContext('2d');
+        const container = document.getElementById('canvasContainer');
+
+        // Device definitions with screen areas
+        const deviceDefs = {
+            imac: {
+                name: 'iMac',
+                width: 500, height: 440,
+                screenX: 30, screenY: 25, screenW: 440, screenH: 330,
+                color: '#d4d4d4', frameW: 6,
+                standH: 60, standW: 140
+            },
+            macbook: {
+                name: 'MacBook',
+                width: 420, height: 300,
+                screenX: 40, screenY: 16, screenW: 340, screenH: 214,
+                color: '#c0c0c0', frameW: 5,
+                baseH: 10
+            },
+            ipad: {
+                name: 'iPad',
+                width: 180, height: 240,
+                screenX: 12, screenY: 14, screenW: 156, screenH: 212,
+                color: '#333333', frameW: 4
+            },
+            iphone: {
+                name: 'iPhone',
+                width: 100, height: 190,
+                screenX: 8, screenY: 14, screenW: 84, screenH: 162,
+                color: '#1a1a2e', frameW: 3
+            }
+        };
+
+        // Device instances with positions
+        let devices = [
+            { id: 'imac', x: 50, y: 60, visible: true },
+            { id: 'macbook', x: 500, y: 180, visible: true },
+            { id: 'ipad', x: 700, y: 50, visible: true },
+            { id: 'iphone', x: 830, y: 80, visible: true }
+        ];
+
+        let screenshots = {};
+        let isDragging = false;
+        let dragDevice = null;
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+
+        // Initialize
+        function init() {
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            
+            // Device toggle buttons
+            document.querySelectorAll('.device-toggle').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const deviceId = this.dataset.device;
+                    const device = devices.find(d => d.id === deviceId);
+                    if (device) {
+                        device.visible = this.classList.contains('active');
+                        updateCanvas();
+                    }
+                });
             });
-        });
+
+            // Mouse events for dragging
+            canvas.addEventListener('mousedown', onMouseDown);
+            canvas.addEventListener('mousemove', onMouseMove);
+            canvas.addEventListener('mouseup', onMouseUp);
+            canvas.addEventListener('mouseleave', onMouseUp);
+
+            // Touch events
+            canvas.addEventListener('touchstart', onTouchStart);
+            canvas.addEventListener('touchmove', onTouchMove);
+            canvas.addEventListener('touchend', onMouseUp);
+
+            // Check for URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlParam = urlParams.get('url');
+            if (urlParam) {
+                document.getElementById('urlInput').value = urlParam;
+                generateMockup();
+            }
+
+            updateCanvas();
+        }
+
+        function resizeCanvas() {
+            const rect = container.getBoundingClientRect();
+            canvas.width = rect.width * 2;
+            canvas.height = rect.height * 2;
+            canvas.style.width = rect.width + 'px';
+            canvas.style.height = rect.height + 'px';
+            updateCanvas();
+        }
+
+        // Color helper
+        function adjustColor(hex, amount) {
+            const num = parseInt(hex.replace("#",""), 16);
+            const R = Math.min(255, Math.max(0, (num >> 16) + amount));
+            const G = Math.min(255, Math.max(0, (num >> 8 & 0x00FF) + amount));
+            const B = Math.min(255, Math.max(0, (num & 0x0000FF) + amount));
+            return `rgb(${R},${G},${B})`;
+        }
+
+        // Draw a device
+        function drawDevice(dev, instance) {
+            const dpr = window.devicePixelRatio || 1;
+            const globalScale = parseFloat(document.getElementById('globalScale').value) || 1;
+            const perspective = parseInt(document.getElementById('perspectiveRange').value) || 0;
+            const shadowIntensity = parseInt(document.getElementById('shadowRange').value) || 20;
+            
+            const x = instance.x * dpr;
+            const y = instance.y * dpr;
+            const w = dev.width * globalScale * dpr;
+            const h = dev.height * globalScale * dpr;
+            
+            ctx.save();
+            
+            // Apply slight perspective tilt
+            if (perspective > 0) {
+                const tilt = perspective / 100;
+                ctx.transform(1, tilt * 0.3, -tilt * 0.1, 1, 0, 0);
+            }
+            
+            // Shadow
+            ctx.shadowColor = `rgba(0,0,0,${shadowIntensity / 100})`;
+            ctx.shadowBlur = 20 * dpr * globalScale;
+            ctx.shadowOffsetX = 5 * dpr * globalScale;
+            ctx.shadowOffsetY = 10 * dpr * globalScale;
+            
+            // Draw device body
+            const bodyColor = dev.color;
+            const grad = ctx.createLinearGradient(x, y, x + w, y + h);
+            grad.addColorStop(0, adjustColor(bodyColor, 20));
+            grad.addColorStop(0.5, bodyColor);
+            grad.addColorStop(1, adjustColor(bodyColor, -30));
+            
+            ctx.fillStyle = grad;
+            
+            if (dev.id === 'imac' || dev.id === 'macbook') {
+                // Rounded rectangle for computers
+                const br = dev.id === 'imac' ? 16 * dpr : 10 * dpr;
+                ctx.beginPath();
+                ctx.roundRect(x, y, w, h, br);
+                ctx.fill();
+                
+                // Screen bezel
+                ctx.shadowColor = 'transparent';
+                ctx.fillStyle = '#111111';
+                const sx = x + dev.screenX * globalScale * dpr;
+                const sy = y + dev.screenY * globalScale * dpr;
+                const sw = dev.screenW * globalScale * dpr;
+                const sh = dev.screenH * globalScale * dpr;
+                ctx.beginPath();
+                ctx.roundRect(sx - dev.frameW * dpr * globalScale, sy - dev.frameW * dpr * globalScale, 
+                              sw + dev.frameW * 2 * dpr * globalScale, sh + dev.frameW * 2 * dpr * globalScale, 
+                              br * 0.6);
+                ctx.fill();
+                
+                // Screen
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.roundRect(sx, sy, sw, sh, br * 0.4);
+                ctx.fill();
+                ctx.clip();
+                
+                // Screenshot
+                const screenshot = screenshots[instance.id];
+                if (screenshot && screenshot.complete && screenshot.naturalWidth > 0) {
+                    const r = Math.max(sw / screenshot.width, sh / screenshot.height);
+                    const iw = screenshot.width * r;
+                    const ih = screenshot.height * r;
+                    ctx.drawImage(screenshot, sx + (sw - iw)/2, sy + (sh - ih)/2, iw, ih);
+                } else {
+                    ctx.fillStyle = '#f0e8ff';
+                    ctx.fillRect(sx, sy, sw, sh);
+                    ctx.fillStyle = '#b8b8d0';
+                    ctx.font = `${12 * dpr}px "Plus Jakarta Sans"`;
+                    ctx.textAlign = 'center';
+                    ctx.fillText('Loading...', sx + sw/2, sy + sh/2);
+                }
+                
+                // Stand for iMac
+                if (dev.id === 'imac') {
+                    ctx.restore();
+                    ctx.shadowColor = `rgba(0,0,0,${shadowIntensity / 200})`;
+                    ctx.shadowBlur = 10 * dpr;
+                    const standX = x + w/2 - (dev.standW * globalScale * dpr)/2;
+                    const standY = y + h;
+                    ctx.fillStyle = grad;
+                    ctx.beginPath();
+                    ctx.moveTo(standX + dev.standW * globalScale * dpr * 0.2, standY);
+                    ctx.lineTo(standX + dev.standW * globalScale * dpr * 0.8, standY);
+                    ctx.lineTo(standX + dev.standW * globalScale * dpr, standY + dev.standH * globalScale * dpr);
+                    ctx.lineTo(standX, standY + dev.standH * globalScale * dpr);
+                    ctx.closePath();
+                    ctx.fill();
+                    
+                    ctx.fillStyle = adjustColor(bodyColor, -20);
+                    ctx.beginPath();
+                    ctx.roundRect(standX - 10 * dpr, standY + dev.standH * globalScale * dpr, 
+                                  dev.standW * globalScale * dpr + 20 * dpr, 8 * dpr, 4 * dpr);
+                    ctx.fill();
+                }
+                
+                // Base for MacBook
+                if (dev.id === 'macbook') {
+                    ctx.restore();
+                    ctx.shadowColor = `rgba(0,0,0,${shadowIntensity / 200})`;
+                    ctx.fillStyle = grad;
+                    ctx.beginPath();
+                    ctx.roundRect(x - 10 * dpr, y + h, w + 20 * dpr, dev.baseH * globalScale * dpr, 
+                                  [0, 0, 6 * dpr, 6 * dpr]);
+                    ctx.fill();
+                }
+            } else {
+                // Mobile/Tablet - rounded rectangle
+                const br = dev.id === 'ipad' ? 12 * dpr : 20 * dpr;
+                ctx.beginPath();
+                ctx.roundRect(x, y, w, h, br);
+                ctx.fill();
+                
+                // Screen bezel
+                ctx.shadowColor = 'transparent';
+                const sx = x + dev.screenX * globalScale * dpr;
+                const sy = y + dev.screenY * globalScale * dpr;
+                const sw = dev.screenW * globalScale * dpr;
+                const sh = dev.screenH * globalScale * dpr;
+                
+                ctx.fillStyle = '#111111';
+                ctx.beginPath();
+                ctx.roundRect(sx - 2 * dpr, sy - 2 * dpr, sw + 4 * dpr, sh + 4 * dpr, br * 0.8);
+                ctx.fill();
+                
+                // Screen
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.roundRect(sx, sy, sw, sh, br * 0.6);
+                ctx.fill();
+                ctx.clip();
+                
+                const screenshot = screenshots[instance.id];
+                if (screenshot && screenshot.complete && screenshot.naturalWidth > 0) {
+                    const r = Math.max(sw / screenshot.width, sh / screenshot.height);
+                    const iw = screenshot.width * r;
+                    const ih = screenshot.height * r;
+                    ctx.drawImage(screenshot, sx + (sw - iw)/2, sy + (sh - ih)/2, iw, ih);
+                } else {
+                    ctx.fillStyle = '#f0e8ff';
+                    ctx.fillRect(sx, sy, sw, sh);
+                }
+                
+                // Notch for iPhone
+                if (dev.id === 'iphone') {
+                    ctx.restore();
+                    ctx.fillStyle = adjustColor(dev.color, -20);
+                    const notchW = sw * 0.4;
+                    const notchH = 12 * dpr;
+                    ctx.beginPath();
+                    ctx.roundRect(sx + (sw - notchW)/2, sy - 1, notchW, notchH, 8 * dpr);
+                    ctx.fill();
+                }
+            }
+            
+            ctx.restore();
+            
+            // Device name label
+            ctx.shadowColor = 'transparent';
+            ctx.fillStyle = 'rgba(0,0,0,0.4)';
+            ctx.font = `${11 * dpr}px "Plus Jakarta Sans"`;
+            ctx.textAlign = 'center';
+            const labelY = dev.id === 'imac' ? y + h + dev.standH * globalScale * dpr + 20 * dpr :
+                           dev.id === 'macbook' ? y + h + dev.baseH * globalScale * dpr + 15 * dpr :
+                           y + h + 15 * dpr;
+            ctx.fillText(dev.name, x + w/2, labelY);
+        }
+
+        // Update canvas
+        function updateCanvas() {
+            const dpr = window.devicePixelRatio || 1;
+            const bgColor = document.getElementById('bgColor').value;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Background
+            ctx.fillStyle = bgColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Subtle grid
+            ctx.strokeStyle = 'rgba(0,0,0,0.03)';
+            ctx.lineWidth = 1;
+            const gridSize = 30 * dpr;
+            for (let i = 0; i < canvas.width; i += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, canvas.height);
+                ctx.stroke();
+            }
+            for (let i = 0; i < canvas.height; i += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(0, i);
+                ctx.lineTo(canvas.width, i);
+                ctx.stroke();
+            }
+            
+            // Draw visible devices
+            devices.forEach(instance => {
+                if (instance.visible) {
+                    const dev = { ...deviceDefs[instance.id], id: instance.id };
+                    drawDevice(dev, instance);
+                }
+            });
+            
+            // Watermark
+            ctx.fillStyle = 'rgba(0,0,0,0.05)';
+            ctx.font = `bold ${18 * dpr}px "Plus Jakarta Sans"`;
+            ctx.textAlign = 'center';
+            ctx.fillText('Kena Mockup', canvas.width / 2, canvas.height - 20 * dpr);
+            
+            // Show/hide empty hint
+            document.getElementById('emptyHint').style.display = 
+                Object.keys(screenshots).length === 0 ? 'block' : 'none';
+        }
+
+        // Generate screenshots
+        async function generateMockup() {
+            let url = document.getElementById('urlInput').value.trim();
+            if (!url) { url = 'apple.com'; document.getElementById('urlInput').value = url; }
+            if (!url.startsWith('http')) url = 'https://' + url;
+            
+            document.getElementById('loading').style.display = 'block';
+            
+            const visibleDevices = devices.filter(d => d.visible);
+            
+            for (const instance of visibleDevices) {
+                const dev = deviceDefs[instance.id];
+                const viewportW = dev.id === 'imac' ? 1440 : dev.id === 'macbook' ? 1280 : dev.id === 'ipad' ? 768 : 390;
+                const viewportH = dev.id === 'imac' ? 900 : dev.id === 'macbook' ? 800 : dev.id === 'ipad' ? 1024 : 780;
+                
+                const apiUrl = `https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&embed=screenshot.url&viewport.width=${viewportW}&viewport.height=${viewportH}&deviceScale=2`;
+                
+                try {
+                    const img = await loadImage(apiUrl);
+                    screenshots[instance.id] = img;
+                } catch (e) {
+                    console.warn(`Failed to load screenshot for ${instance.id}`);
+                    // Try fallback
+                    try {
+                        const fallbackUrl = `https://image.thum.io/get/width/${viewportW}/crop/${viewportH}/${url}`;
+                        const img = await loadImage(fallbackUrl);
+                        screenshots[instance.id] = img;
+                    } catch (e2) {
+                        console.warn(`Fallback also failed for ${instance.id}`);
+                    }
+                }
+            }
+            
+            document.getElementById('loading').style.display = 'none';
+            updateCanvas();
+        }
+
+        function loadImage(src) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'anonymous';
+                img.onload = () => resolve(img);
+                img.onerror = reject;
+                img.src = src;
+            });
+        }
+
+        // Drag handling
+        function getCanvasPos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            return {
+                x: (e.clientX - rect.left) * dpr,
+                y: (e.clientY - rect.top) * dpr
+            };
+        }
+
+        function findDeviceAt(pos) {
+            const globalScale = parseFloat(document.getElementById('globalScale').value) || 1;
+            const dpr = window.devicePixelRatio || 1;
+            
+            // Check in reverse order (top devices first)
+            for (let i = devices.length - 1; i >= 0; i--) {
+                const instance = devices[i];
+                if (!instance.visible) continue;
+                const dev = deviceDefs[instance.id];
+                const w = dev.width * globalScale * dpr;
+                const h = dev.height * globalScale * dpr;
+                
+                if (pos.x >= instance.x * dpr && pos.x <= instance.x * dpr + w &&
+                    pos.y >= instance.y * dpr && pos.y <= instance.y * dpr + h) {
+                    return instance;
+                }
+            }
+            return null;
+        }
+
+        function onMouseDown(e) {
+            const pos = getCanvasPos(e);
+            const device = findDeviceAt(pos);
+            if (device) {
+                isDragging = true;
+                dragDevice = device;
+                const dpr = window.devicePixelRatio || 1;
+                dragOffsetX = pos.x - device.x * dpr;
+                dragOffsetY = pos.y - device.y * dpr;
+                canvas.style.cursor = 'grabbing';
+            }
+        }
+
+        function onMouseMove(e) {
+            if (isDragging && dragDevice) {
+                const pos = getCanvasPos(e);
+                const dpr = window.devicePixelRatio || 1;
+                dragDevice.x = Math.round((pos.x - dragOffsetX) / dpr);
+                dragDevice.y = Math.round((pos.y - dragOffsetY) / dpr);
+                updateCanvas();
+            } else {
+                const pos = getCanvasPos(e);
+                const device = findDeviceAt(pos);
+                canvas.style.cursor = device ? 'grab' : 'default';
+            }
+        }
+
+        function onMouseUp() {
+            isDragging = false;
+            dragDevice = null;
+            canvas.style.cursor = 'default';
+        }
+
+        function onTouchStart(e) {
+            if (e.touches.length === 1) {
+                const touch = e.touches[0];
+                const pos = getCanvasPos(touch);
+                const device = findDeviceAt(pos);
+                if (device) {
+                    isDragging = true;
+                    dragDevice = device;
+                    const dpr = window.devicePixelRatio || 1;
+                    dragOffsetX = pos.x - device.x * dpr;
+                    dragOffsetY = pos.y - device.y * dpr;
+                    e.preventDefault();
+                }
+            }
+        }
+
+        function onTouchMove(e) {
+            if (isDragging && dragDevice && e.touches.length === 1) {
+                const touch = e.touches[0];
+                const pos = getCanvasPos(touch);
+                const dpr = window.devicePixelRatio || 1;
+                dragDevice.x = Math.round((pos.x - dragOffsetX) / dpr);
+                dragDevice.y = Math.round((pos.y - dragOffsetY) / dpr);
+                updateCanvas();
+                e.preventDefault();
+            }
+        }
+
+        // Reset positions
+        function resetDevices() {
+            devices = [
+                { id: 'imac', x: 50, y: 60, visible: true },
+                { id: 'macbook', x: 500, y: 180, visible: true },
+                { id: 'ipad', x: 700, y: 50, visible: true },
+                { id: 'iphone', x: 830, y: 80, visible: true }
+            ];
+            document.querySelectorAll('.device-toggle').forEach(btn => btn.classList.add('active'));
+            updateCanvas();
+        }
+
+        // Download
+        function downloadMockup() {
+            const temp = document.createElement('canvas');
+            temp.width = canvas.width;
+            temp.height = canvas.height;
+            const tctx = temp.getContext('2d');
+            tctx.drawImage(canvas, 0, 0);
+            
+            const link = document.createElement('a');
+            link.download = `multi-device-mockup-${Date.now()}.png`;
+            link.href = temp.toDataURL('image/png');
+            link.click();
+        }
+
+        // RoundRect polyfill
+        CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+            if (typeof r === 'number') r = { tl: r, tr: r, br: r, bl: r };
+            this.moveTo(x + r.tl, y);
+            this.lineTo(x + w - r.tr, y);
+            this.quadraticCurveTo(x + w, y, x + w, y + r.tr);
+            this.lineTo(x + w, y + h - r.br);
+            this.quadraticCurveTo(x + w, y + h, x + w - r.br, y + h);
+            this.lineTo(x + r.bl, y + h);
+            this.quadraticCurveTo(x, y + h, x, y + h - r.bl);
+            this.lineTo(x, y + r.tl);
+            this.quadraticCurveTo(x, y, x + r.tl, y);
+            this.closePath();
+            return this;
+        };
+
+        // Start
+        window.onload = init;
     </script>
 </body>
 </html>
