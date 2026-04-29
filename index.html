@@ -1,62 +1,524 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kena Mockup</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kena Mockup | Premium Device Mockup Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
-body {margin:0;font-family:Arial;background:#f5f7fb;}
-nav {display:flex;justify-content:space-between;padding:20px;background:#fff;}
-nav a {background:#6366f1;color:#fff;padding:10px 20px;border-radius:20px;text-decoration:none;}
+    body {
+      background: linear-gradient(135deg, #f5f7fb 0%, #eef2f6 100%);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #0f172a;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
 
-.hero {display:flex;align-items:center;padding:60px;}
-.hero-text {width:50%;}
-.hero img {width:50%;}
+    /* ========== NAVBAR ========== */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
 
-.section {padding:60px;text-align:center;}
-.cards {display:flex;gap:20px;justify-content:center;}
-.card {background:#fff;padding:20px;border-radius:15px;width:200px;}
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
 
-footer {background:#0f172a;color:#fff;text-align:center;padding:20px;}
-</style>
+    .logo span {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #475569;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #6366f1;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.8rem;
+      border-radius: 3rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(99,102,241,0.35);
+      letter-spacing: 0.3px;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #4f46e5, #4338ca);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px rgba(99,102,241,0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #6366f1;
+      border: 2px solid #6366f1;
+      padding: 0.65rem 1.8rem;
+      border-radius: 3rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-outline:hover {
+      background: #6366f1;
+      color: white;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      gap: 3rem;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    .hero-visual {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-mockup-preview {
+      position: relative;
+      width: 320px;
+      height: 640px;
+      background: linear-gradient(145deg, #2d3748, #1a202c);
+      border-radius: 40px;
+      padding: 14px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+      transform: rotate(-3deg);
+    }
+
+    .hero-mockup-preview .hero-screen {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border-radius: 28px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+      font-weight: 800;
+    }
+
+    .hero-mockup-preview .hero-notch {
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 28px;
+      background: #1a202c;
+      border-radius: 0 0 18px 18px;
+      z-index: 2;
+    }
+
+    /* Floating devices */
+    .floating-device {
+      position: absolute;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      background: white;
+      padding: 5px;
+    }
+
+    .floating-device.tablet {
+      width: 180px;
+      height: 240px;
+      top: -40px;
+      right: -30px;
+      transform: rotate(8deg);
+      background: linear-gradient(145deg, #2d3748, #1a202c);
+      border-radius: 16px;
+    }
+
+    .floating-device.laptop {
+      width: 280px;
+      height: 180px;
+      bottom: -30px;
+      left: -50px;
+      transform: rotate(-5deg);
+      background: linear-gradient(145deg, #2d3748, #1a202c);
+      border-radius: 8px;
+    }
+
+    /* ========== FEATURES SECTION ========== */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+
+    .section p.subtitle {
+      color: #64748b;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+
+    .cards {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 2rem;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 50px rgba(99,102,241,0.15);
+      border-color: rgba(99,102,241,0.2);
+    }
+
+    .card .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    /* ========== GENERATOR SECTION ========== */
+    .generator-section {
+      background: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .generator-input {
+      display: flex;
+      gap: 1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      background: #f1f5f9;
+      padding: 0.5rem;
+      border-radius: 60px;
+    }
+
+    .generator-input input {
+      flex: 1;
+      border: none;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 40px;
+      background: white;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      outline: none;
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .generator-input input:focus {
+      border-color: #6366f1;
+    }
+
+    .device-tabs {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .device-tab {
+      padding: 0.6rem 1.5rem;
+      border-radius: 2rem;
+      border: 2px solid #e2e8f0;
+      background: white;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .device-tab.active {
+      background: #6366f1;
+      color: white;
+      border-color: #6366f1;
+    }
+
+    .device-tab:hover {
+      border-color: #6366f1;
+    }
+
+    canvas {
+      margin-top: 2rem;
+      max-width: 100%;
+      background: #f8fafc;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    #loading {
+      display: none;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #6366f1;
+      font-size: 1.1rem;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonial-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 2rem;
+      width: 320px;
+      text-align: left;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    }
+
+    .testimonial-card .stars {
+      color: #f59e0b;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-card p {
+      color: #475569;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-card .author {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    footer p {
+      color: #94a3b8;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .generator-input {
+        flex-direction: column;
+        border-radius: 20px;
+        padding: 0.8rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<nav>
-  <h2>KenaMockup</h2>
-  <a href="generate.html">Get Started</a>
-</nav>
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar">
+    <div class="logo">Kena<span>Mockup</span></div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#generator">Generator</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#generator" class="btn-primary">Get Started</a>
+    </div>
+  </nav>
 
-<section class="hero">
-  <div class="hero-text">
-    <h1>Create Stunning Mockups</h1>
-    <p>Generate Apple-style mockups instantly.</p>
-    <a href="generate.html">Generate Mockup</a>
-  </div>
-  <img src="https://i.imgur.com/8Km9tLL.png">
-</section>
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Create <span>Stunning</span> Device Mockups Instantly</h1>
+      <p>Transform any website into beautiful, professional-grade device mockups. Perfect for designers, developers, and marketers.</p>
+      <div style="display:flex;gap:1rem;">
+        <a href="https://yasing.up.railway.app/generate.html" class="btn-primary">Generate Mockup</a>
+        <a href="#features" class="btn-outline">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-mockup-preview">
+        <div class="hero-notch"></div>
+        <div class="hero-screen">📱</div>
+      </div>
+      <div class="floating-device tablet" style="background:#6366f1;display:flex;align-items:center;justify-content:center;font-size:2rem;">📲</div>
+      <div class="floating-device laptop" style="background:#4f46e5;display:flex;align-items:center;justify-content:center;font-size:2rem;">💻</div>
+    </div>
+  </section>
 
-<section class="section">
-  <h2>Supported Devices</h2>
-  <div class="cards">
-    <div class="card">📱 iPhone</div>
-    <div class="card">📲 iPad</div>
-    <div class="card">💻 MacBook</div>
-  </div>
-</section>
+  <!-- ========== FEATURES ========== -->
+  <section class="section" id="features">
+    <h2>Why Choose Kena Mockup?</h2>
+    <p class="subtitle">Everything you need to create professional mockups in seconds</p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h3>Instant Generation</h3>
+        <p>Enter any URL and get beautiful mockups in seconds. No design skills needed.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎨</div>
+        <h3>Realistic Frames</h3>
+        <p>High-quality device frames for iPhone, iPad, MacBook, and more.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💎</div>
+        <h3>HD Downloads</h3>
+        <p>Export your mockups in high resolution, ready for presentations and portfolios.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔄</div>
+        <h3>Multiple Layouts</h3>
+        <p>Single device, multi-angle, and multi-screen layouts for any scenario.</p>
+      </div>
+    </div>
+  </section>
 
-<section class="section">
-  <h2>Testimonials</h2>
-  <div class="cards">
-    <div class="card">🔥 Amazing tool</div>
-    <div class="card">🚀 Super fast</div>
-    <div class="card">💎 Premium feel</div>
-  </div>
-</section>
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="section" id="testimonials">
+    <h2>Loved by Creators</h2>
+    <p class="subtitle">Join thousands of happy designers and developers</p>
+    <div class="cards">
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"Kena Mockup saved me hours of work. The mockups look incredibly professional!"</p>
+        <div class="author">- Sarah J., UX Designer</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"I use this for all my client presentations. The realistic frames make a huge difference."</p>
+        <div class="author">- Mark T., Developer</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"Super fast and easy to use. The multi-device layouts are a game changer!"</p>
+        <div class="author">- Lisa M., Product Manager</div>
+      </div>
+    </div>
+  </section>
 
-<footer>© 2026 Kena Mockup</footer>
-
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <h2 style="margin-bottom:0.5rem;">Kena<span style="color:#6366f1;">Mockup</span></h2>
+    <p>© 2026 Kena Mockup. All rights reserved.</p>
+  </footer>
 </body>
 </html>
