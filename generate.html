@@ -3,187 +3,819 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Generate Mockup</title>
-
+<title>Kena Mockup | Advanced Editor</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-body {font-family:Arial;background:#eef2f6;text-align:center;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-input {
-  padding:12px;
-  width:60%;
-  border-radius:20px;
-  border:none;
-}
+    body {
+      background: linear-gradient(135deg, #f5f7fb 0%, #eef2f6 100%);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #0f172a;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
 
-button {
-  padding:12px 20px;
-  border:none;
-  border-radius:20px;
-  background:#6366f1;
-  color:#fff;
-  margin:10px;
-  cursor:pointer;
-}
+    /* ========== NAVBAR ========== */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2.5rem;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
 
-canvas {
-  margin-top:20px;
-  max-width:95%;
-  background:#fff;
-  border-radius:20px;
-}
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
 
-#loading {
-  display:none;
-  margin-top:15px;
-}
-</style>
+    .logo span {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #475569;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #6366f1;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.8rem;
+      border-radius: 3rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(99,102,241,0.35);
+      letter-spacing: 0.3px;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #4f46e5, #4338ca);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 25px rgba(99,102,241,0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #6366f1;
+      border: 2px solid #6366f1;
+      padding: 0.65rem 1.8rem;
+      border-radius: 3rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-outline:hover {
+      background: #6366f1;
+      color: white;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      gap: 3rem;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    .hero-visual {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-mockup-preview {
+      position: relative;
+      width: 320px;
+      height: 640px;
+      background: linear-gradient(145deg, #2d3748, #1a202c);
+      border-radius: 40px;
+      padding: 14px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+      transform: rotate(-3deg);
+    }
+
+    .hero-mockup-preview .hero-screen {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      border-radius: 28px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+      font-weight: 800;
+    }
+
+    .hero-mockup-preview .hero-notch {
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 28px;
+      background: #1a202c;
+      border-radius: 0 0 18px 18px;
+      z-index: 2;
+    }
+
+    /* Floating devices */
+    .floating-device {
+      position: absolute;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      background: white;
+      padding: 5px;
+    }
+
+    .floating-device.tablet {
+      width: 180px;
+      height: 240px;
+      top: -40px;
+      right: -30px;
+      transform: rotate(8deg);
+      background: linear-gradient(145deg, #2d3748, #1a202c);
+      border-radius: 16px;
+    }
+
+    .floating-device.laptop {
+      width: 280px;
+      height: 180px;
+      bottom: -30px;
+      left: -50px;
+      transform: rotate(-5deg);
+      background: linear-gradient(145deg, #2d3748, #1a202c);
+      border-radius: 8px;
+    }
+
+    /* ========== FEATURES SECTION ========== */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.5px;
+    }
+
+    .section p.subtitle {
+      color: #64748b;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+
+    .cards {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 2rem;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 50px rgba(99,102,241,0.15);
+      border-color: rgba(99,102,241,0.2);
+    }
+
+    .card .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    /* ========== GENERATOR SECTION ========== */
+    .generator-section {
+      background: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .generator-input {
+      display: flex;
+      gap: 1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      background: #f1f5f9;
+      padding: 0.5rem;
+      border-radius: 60px;
+    }
+
+    .generator-input input {
+      flex: 1;
+      border: none;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 40px;
+      background: white;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      outline: none;
+      border: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .generator-input input:focus {
+      border-color: #6366f1;
+    }
+
+    .device-tabs {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .device-tab {
+      padding: 0.6rem 1.5rem;
+      border-radius: 2rem;
+      border: 2px solid #e2e8f0;
+      background: white;
+      cursor: pointer;
+      font-weight: 600;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .device-tab.active {
+      background: #6366f1;
+      color: white;
+      border-color: #6366f1;
+    }
+
+    .device-tab:hover {
+      border-color: #6366f1;
+    }
+
+    canvas {
+      margin-top: 2rem;
+      max-width: 100%;
+      background: #f8fafc;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    #loading {
+      display: none;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #6366f1;
+      font-size: 1.1rem;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonial-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 2rem;
+      width: 320px;
+      text-align: left;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    }
+
+    .testimonial-card .stars {
+      color: #f59e0b;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-card p {
+      color: #475569;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-card .author {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    footer p {
+      color: #94a3b8;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .generator-input {
+        flex-direction: column;
+        border-radius: 20px;
+        padding: 0.8rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>Generate Mockup</h1>
 
-<input id="url" placeholder="Enter website URL">
-<br>
-<button onclick="loadPreview()">Generate</button>
-<button onclick="download()">Download</button>
+  <!-- ========== GENERATOR ========== -->
+  <section class="generator-section" id="generator">
+    <h2 style="font-size:2.5rem;font-weight:800;margin-bottom:0.5rem;">Generate Your Mockup</h2>
+    <p style="color:#64748b;margin-bottom:2rem;">Enter a website URL and choose your device</p>
+    
+    <div class="generator-input">
+      <input id="url" placeholder="Enter website URL (e.g., apple.com, linear.app)" value="apple.com">
+      <button class="btn-primary" onclick="loadPreview()" style="white-space:nowrap;">⚡ Generate</button>
+    </div>
 
-<div id="loading">⏳ Generating screenshot...</div>
+    <div class="device-tabs">
+      <button class="device-tab active" onclick="switchDevice('iphone', this)">📱 iPhone</button>
+      <button class="device-tab" onclick="switchDevice('ipad', this)">📲 iPad</button>
+      <button class="device-tab" onclick="switchDevice('macbook', this)">💻 MacBook</button>
+      <button class="device-tab" onclick="switchDevice('monitor', this)">🖥️ Monitor</button>
+      <button class="device-tab" onclick="switchDevice('multi', this)">🔄 Multi-Device</button>
+    </div>
 
-<canvas id="canvas"></canvas>
+    <div id="loading">⏳ Generating screenshot...</div>
+    <canvas id="canvas"></canvas>
+    <br>
+    <button class="btn-primary" onclick="download()" style="margin-top:1rem;">⬇ Download HD Mockup</button>
+  </section>
 
-<script>
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    let screenshot = null;
+    let currentDevice = "iphone";
 
-let screenshot;
+    // Device configurations with realistic dimensions
+    const deviceConfigs = {
+      iphone: {
+        name: "iPhone 15 Pro",
+        width: 390,
+        height: 780,
+        frameWidth: 22,
+        type: "mobile",
+        screenWidth: 346,
+        screenHeight: 736,
+        screenX: 22,
+        screenY: 22,
+        borderRadius: 36,
+        screenBorderRadius: 24
+      },
+      ipad: {
+        name: "iPad Pro",
+        width: 680,
+        height: 880,
+        frameWidth: 32,
+        type: "tablet",
+        screenWidth: 616,
+        screenHeight: 816,
+        screenX: 32,
+        screenY: 32,
+        borderRadius: 24,
+        screenBorderRadius: 16
+      },
+      macbook: {
+        name: "MacBook Air",
+        width: 880,
+        height: 560,
+        frameWidth: 28,
+        type: "laptop",
+        screenWidth: 824,
+        screenHeight: 504,
+        screenX: 28,
+        screenY: 28,
+        borderRadius: 12,
+        screenBorderRadius: 6
+      },
+      monitor: {
+        name: "Studio Display",
+        width: 960,
+        height: 600,
+        frameWidth: 44,
+        type: "desktop",
+        screenWidth: 872,
+        screenHeight: 512,
+        screenX: 44,
+        screenY: 44,
+        borderRadius: 12,
+        screenBorderRadius: 6
+      }
+    };
 
-/* FRAME CONFIG */
-const frames = {
-  iphone: {
-    src: "assets/iphone.png",
-    w: 300, h: 600,
-    screen: { x:20, y:40, w:260, h:520 }
-  },
-  ipad: {
-    src: "assets/ipad.png",
-    w: 400, h: 550,
-    screen: { x:30, y:30, w:340, h:490 }
-  },
-  macbook: {
-    src: "assets/macbook.png",
-    w: 700, h: 450,
-    screen: { x:60, y:40, w:580, h:320 }
-  }
-};
+    // Switch device
+    window.switchDevice = function(device, tabElement) {
+      currentDevice = device;
+      
+      // Update active tab
+      document.querySelectorAll('.device-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      tabElement.classList.add('active');
+      
+      // Redraw if screenshot is loaded
+      if (screenshot && screenshot.complete) {
+        draw();
+      }
+    };
 
-const frameImgs = {};
-Object.keys(frames).forEach(k=>{
-  const img = new Image();
-  img.src = frames[k].src;
-  frameImgs[k] = img;
-});
+    // Helper to lighten/darken colors
+    function adjustColor(color, amount) {
+      const num = parseInt(color.replace("#",""), 16);
+      const R = Math.min(255, Math.max(0, (num >> 16) + amount));
+      const G = Math.min(255, Math.max(0, (num >> 8 & 0x00FF) + amount));
+      const B = Math.min(255, Math.max(0, (num & 0x0000FF) + amount));
+      return `rgb(${R},${G},${B})`;
+    }
 
-/* LOADING UI */
-function showLoading(){document.getElementById("loading").style.display="block";}
-function hideLoading(){document.getElementById("loading").style.display="none";}
+    // Draw realistic device frame
+    function drawDeviceFrame(ctx, x, y, width, height, deviceType, frameWidth, borderRadius) {
+      const frameColor = "#1e293b";
+      
+      // Main frame gradient
+      const gradient = ctx.createLinearGradient(x, y, x + width, y + height);
+      gradient.addColorStop(0, adjustColor(frameColor, 20));
+      gradient.addColorStop(0.5, frameColor);
+      gradient.addColorStop(1, adjustColor(frameColor, -30));
+      
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.roundRect(x, y, width, height, borderRadius);
+      ctx.fill();
+      
+      // Frame highlight (top edge)
+      ctx.strokeStyle = "rgba(255,255,255,0.15)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.roundRect(x + 1, y + 1, width - 2, height - 2, borderRadius - 1);
+      ctx.stroke();
+      
+      // Device-specific details
+      if (deviceType === "mobile") {
+        // Side button
+        ctx.fillStyle = adjustColor(frameColor, -20);
+        ctx.fillRect(x + width - 2, y + 120, 3, 60);
+        
+        // Notch
+        const notchWidth = width * 0.25;
+        const notchHeight = 24;
+        ctx.fillStyle = adjustColor(frameColor, -40);
+        ctx.beginPath();
+        ctx.roundRect(
+          x + (width - notchWidth) / 2,
+          y + frameWidth - 2,
+          notchWidth,
+          notchHeight,
+          12
+        );
+        ctx.fill();
+      }
+      
+      if (deviceType === "laptop") {
+        // Base/keyboard section
+        const baseHeight = 24;
+        const baseY = y + height;
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.roundRect(x - 15, baseY, width + 30, baseHeight, [0, 0, 8, 8]);
+        ctx.fill();
+        
+        // Keyboard indent
+        ctx.fillStyle = adjustColor(frameColor, -40);
+        ctx.beginPath();
+        ctx.roundRect(x + 30, baseY + 4, width - 60, 12, 4);
+        ctx.fill();
+      }
+      
+      if (deviceType === "desktop") {
+        // Stand
+        const standWidth = 80;
+        const standHeight = 40;
+        const standX = x + (width - standWidth) / 2;
+        const standY = y + height;
+        
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.moveTo(standX + standWidth * 0.2, standY);
+        ctx.lineTo(standX + standWidth * 0.8, standY);
+        ctx.lineTo(standX + standWidth, standY + standHeight);
+        ctx.lineTo(standX, standY + standHeight);
+        ctx.closePath();
+        ctx.fill();
+        
+        // Base
+        ctx.fillStyle = adjustColor(frameColor, -20);
+        ctx.beginPath();
+        ctx.roundRect(standX - 20, standY + standHeight, standWidth + 40, 10, 4);
+        ctx.fill();
+      }
+    }
 
-/* LOAD SCREENSHOT WITH FALLBACK */
-function loadPreview() {
-  let url = document.getElementById("url").value.trim();
-  if (!url) return alert("Enter URL");
+    // Load screenshot with fallback
+    function loadPreview() {
+      let url = document.getElementById("url").value.trim();
+      if (!url) {
+        url = "apple.com";
+        document.getElementById("url").value = url;
+      }
+      if (!url.startsWith("http")) url = "https://" + url;
 
-  if (!url.startsWith("http")) url = "https://" + url;
+      showLoading();
 
-  showLoading();
+      // Primary API with better parameters
+      const api1 = `https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&embed=screenshot.url&viewport.width=1440&viewport.height=900&deviceScale=2`;
+      
+      // Fallback API
+      const api2 = `https://image.thum.io/get/width/1440/crop/900/${url}`;
 
-  let api1 = `https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&embed=screenshot.url`;
-  let api2 = `https://image.thum.io/get/width/1200/${url}`;
+      tryLoad(api1, () => {
+        console.log("Primary API failed, trying fallback...");
+        tryLoad(api2, () => {
+          hideLoading();
+          alert("Could not generate screenshot. Please try another URL or check your connection.");
+        });
+      });
+    }
 
-  tryLoad(api1, () => {
-    console.log("Fallback...");
-    tryLoad(api2, () => {
-      hideLoading();
-      alert("Screenshot failed.");
-    });
-  });
-}
+    function tryLoad(src, fail) {
+      screenshot = new Image();
+      screenshot.crossOrigin = "anonymous";
 
-function tryLoad(src, fail) {
-  screenshot = new Image();
-  screenshot.crossOrigin = "anonymous";
+      screenshot.onload = () => {
+        hideLoading();
+        draw();
+      };
 
-  screenshot.onload = () => {
-    hideLoading();
-    draw();
-  };
+      screenshot.onerror = () => {
+        fail();
+      };
 
-  screenshot.onerror = () => fail();
+      screenshot.src = src;
+    }
 
-  screenshot.src = src;
-}
+    // Draw single device
+    function drawSingleDevice(dev, baseX, baseY, scale = 1) {
+      const width = dev.width * scale;
+      const height = dev.height * scale;
+      const fw = dev.frameWidth * scale;
+      
+      // Draw frame
+      drawDeviceFrame(ctx, baseX, baseY, width, height, dev.type, fw, dev.borderRadius * scale);
+      
+      // Draw screenshot
+      const screenX = baseX + dev.screenX * scale;
+      const screenY = baseY + dev.screenY * scale;
+      const screenWidth = dev.screenWidth * scale;
+      const screenHeight = dev.screenHeight * scale;
+      
+      ctx.save();
+      ctx.beginPath();
+      ctx.roundRect(screenX, screenY, screenWidth, screenHeight, dev.screenBorderRadius * scale);
+      ctx.clip();
+      
+      if (screenshot && screenshot.complete && screenshot.naturalWidth > 0) {
+        // Scale to fill screen area without distortion
+        const scaleToFill = Math.max(
+          screenWidth / screenshot.width,
+          screenHeight / screenshot.height
+        );
+        
+        const imgWidth = screenshot.width * scaleToFill;
+        const imgHeight = screenshot.height * scaleToFill;
+        const imgX = screenX + (screenWidth - imgWidth) / 2;
+        const imgY = screenY + (screenHeight - imgHeight) / 2;
+        
+        ctx.drawImage(screenshot, imgX, imgY, imgWidth, imgHeight);
+      } else {
+        // Placeholder
+        ctx.fillStyle = "#e2e8f0";
+        ctx.fillRect(screenX, screenY, screenWidth, screenHeight);
+        ctx.fillStyle = "#94a3b8";
+        ctx.font = "bold 20px 'Plus Jakarta Sans'";
+        ctx.textAlign = "center";
+        ctx.fillText("Enter URL & Generate", screenX + screenWidth/2, screenY + screenHeight/2);
+      }
+      
+      ctx.restore();
+    }
 
-/* DRAW FRAME */
-function drawFrame(key, x, y, scale) {
-  const f = frames[key];
-  const frame = frameImgs[key];
+    // Main draw function
+    function draw() {
+      canvas.width = 1200;
+      canvas.height = 800;
 
-  const fw = f.w * scale;
-  const fh = f.h * scale;
+      // Background gradient
+      const bgGradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      bgGradient.addColorStop(0, "#f8fafc");
+      bgGradient.addColorStop(1, "#e2e8f0");
+      ctx.fillStyle = bgGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  const sx = x + f.screen.x * scale;
-  const sy = y + f.screen.y * scale;
-  const sw = f.screen.w * scale;
-  const sh = f.screen.h * scale;
+      if (currentDevice === "multi") {
+        // Multi-device layout
+        const iphone = deviceConfigs.iphone;
+        const ipad = deviceConfigs.ipad;
+        const macbook = deviceConfigs.macbook;
+        
+        drawSingleDevice(macbook, 50, 200, 0.7);
+        drawSingleDevice(ipad, 600, 250, 0.55);
+        drawSingleDevice(iphone, 450, 350, 0.45);
+      } else {
+        // Single device centered
+        const dev = deviceConfigs[currentDevice];
+        const scale = 0.85;
+        const width = dev.width * scale;
+        const height = dev.height * scale;
+        const x = (canvas.width - width) / 2;
+        const y = (canvas.height - height) / 2;
+        
+        drawSingleDevice(dev, x, y, scale);
+      }
 
-  if (screenshot && screenshot.complete) {
-    const r = Math.max(sw / screenshot.width, sh / screenshot.height);
-    const iw = screenshot.width * r;
-    const ih = screenshot.height * r;
+      // Watermark
+      ctx.fillStyle = "rgba(0,0,0,0.08)";
+      ctx.font = "bold 28px 'Plus Jakarta Sans'";
+      ctx.textAlign = "center";
+      ctx.fillText("KENA MOCKUP", canvas.width/2, canvas.height - 30);
 
-    ctx.drawImage(
-      screenshot,
-      sx + (sw - iw)/2,
-      sy + (sh - ih)/2,
-      iw,
-      ih
-    );
-  }
+      // Device name label
+      if (currentDevice !== "multi") {
+        ctx.fillStyle = "rgba(0,0,0,0.4)";
+        ctx.font = "bold 16px 'Plus Jakarta Sans'";
+        ctx.fillText(deviceConfigs[currentDevice].name, canvas.width/2, canvas.height - 60);
+      }
+    }
 
-  ctx.drawImage(frame, x, y, fw, fh);
-}
+    // Download HD
+    function download() {
+      if (!screenshot || !screenshot.complete) {
+        alert("Please generate a mockup first!");
+        return;
+      }
+      
+      const temp = document.createElement("canvas");
+      const scale = 2;
+      temp.width = canvas.width * scale;
+      temp.height = canvas.height * scale;
+      
+      const tctx = temp.getContext("2d");
+      tctx.scale(scale, scale);
+      tctx.drawImage(canvas, 0, 0);
+      
+      const link = document.createElement("a");
+      link.download = `kena-mockup-${Date.now()}.png`;
+      link.href = temp.toDataURL("image/png");
+      link.click();
+    }
 
-/* MAIN DRAW */
-function draw() {
-  canvas.width = 1200;
-  canvas.height = 700;
+    // Loading UI
+    function showLoading() {
+      document.getElementById("loading").style.display = "block";
+    }
+    
+    function hideLoading() {
+      document.getElementById("loading").style.display = "none";
+    }
 
-  ctx.fillStyle = "#eef2f6";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
+    // Canvas roundRect helper
+    CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+      if (typeof r === 'number') r = { tl: r, tr: r, br: r, bl: r };
+      if (Array.isArray(r)) r = { tl: r[0], tr: r[1] || r[0], br: r[2] || r[0], bl: r[3] || r[0] };
+      
+      this.moveTo(x + r.tl, y);
+      this.lineTo(x + w - r.tr, y);
+      this.quadraticCurveTo(x + w, y, x + w, y + r.tr);
+      this.lineTo(x + w, y + h - r.br);
+      this.quadraticCurveTo(x + w, y + h, x + w - r.br, y + h);
+      this.lineTo(x + r.bl, y + h);
+      this.quadraticCurveTo(x, y + h, x, y + h - r.bl);
+      this.lineTo(x, y + r.tl);
+      this.quadraticCurveTo(x, y, x + r.tl, y);
+      this.closePath();
+      return this;
+    };
 
-  drawFrame("macbook", 250,150,0.8);
-  drawFrame("ipad", 750,200,0.6);
-  drawFrame("iphone", 500,300,0.5);
-}
-
-/* DOWNLOAD HD */
-function download() {
-  const temp = document.createElement("canvas");
-  const scale = 2;
-
-  temp.width = canvas.width * scale;
-  temp.height = canvas.height * scale;
-
-  const tctx = temp.getContext("2d");
-  tctx.scale(scale, scale);
-  tctx.drawImage(canvas,0,0);
-
-  const link = document.createElement("a");
-  link.download = "mockup.png";
-  link.href = temp.toDataURL("image/png");
-  link.click();
-}
-</script>
+    // Initial draw
+    window.onload = function() {
+      draw();
+    };
+  </script>
 
 </body>
 </html>
