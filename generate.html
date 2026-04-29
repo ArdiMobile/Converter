@@ -6,11 +6,7 @@
 <title>Generate Mockup</title>
 
 <style>
-body {
-  font-family: Arial;
-  background:#eef2f6;
-  text-align:center;
-}
+body {font-family:Arial;background:#eef2f6;text-align:center;}
 
 input {
   padding:12px;
@@ -30,10 +26,15 @@ button {
 }
 
 canvas {
-  margin-top:30px;
+  margin-top:20px;
   max-width:95%;
   background:#fff;
   border-radius:20px;
+}
+
+#loading {
+  display:none;
+  margin-top:15px;
 }
 </style>
 </head>
@@ -47,14 +48,15 @@ canvas {
 <button onclick="loadPreview()">Generate</button>
 <button onclick="download()">Download</button>
 
+<div id="loading">⏳ Generating screenshot...</div>
+
 <canvas id="canvas"></canvas>
 
 <script>
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-let screenshot = new Image();
-screenshot.crossOrigin = "anonymous";
+let screenshot;
 
 /* FRAME CONFIG */
 const frames = {
@@ -76,25 +78,49 @@ const frames = {
 };
 
 const frameImgs = {};
-
-/* LOAD FRAMES */
-Object.keys(frames).forEach(key=>{
+Object.keys(frames).forEach(k=>{
   const img = new Image();
-  img.src = frames[key].src;
-  frameImgs[key] = img;
+  img.src = frames[k].src;
+  frameImgs[k] = img;
 });
 
-/* LOAD SCREENSHOT */
+/* LOADING UI */
+function showLoading(){document.getElementById("loading").style.display="block";}
+function hideLoading(){document.getElementById("loading").style.display="none";}
+
+/* LOAD SCREENSHOT WITH FALLBACK */
 function loadPreview() {
   let url = document.getElementById("url").value.trim();
+  if (!url) return alert("Enter URL");
+
   if (!url.startsWith("http")) url = "https://" + url;
 
-  const api = `https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&embed=screenshot.url`;
+  showLoading();
 
-  screenshot.onload = draw;
-  screenshot.onerror = ()=> alert("Screenshot failed");
+  let api1 = `https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&embed=screenshot.url`;
+  let api2 = `https://image.thum.io/get/width/1200/${url}`;
 
-  screenshot.src = api;
+  tryLoad(api1, () => {
+    console.log("Fallback...");
+    tryLoad(api2, () => {
+      hideLoading();
+      alert("Screenshot failed.");
+    });
+  });
+}
+
+function tryLoad(src, fail) {
+  screenshot = new Image();
+  screenshot.crossOrigin = "anonymous";
+
+  screenshot.onload = () => {
+    hideLoading();
+    draw();
+  };
+
+  screenshot.onerror = () => fail();
+
+  screenshot.src = src;
 }
 
 /* DRAW FRAME */
@@ -110,7 +136,7 @@ function drawFrame(key, x, y, scale) {
   const sw = f.screen.w * scale;
   const sh = f.screen.h * scale;
 
-  if (screenshot.complete) {
+  if (screenshot && screenshot.complete) {
     const r = Math.max(sw / screenshot.width, sh / screenshot.height);
     const iw = screenshot.width * r;
     const ih = screenshot.height * r;
@@ -135,13 +161,8 @@ function draw() {
   ctx.fillStyle = "#eef2f6";
   ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  // laptop
   drawFrame("macbook", 250,150,0.8);
-
-  // tablet
   drawFrame("ipad", 750,200,0.6);
-
-  // phone
   drawFrame("iphone", 500,300,0.5);
 }
 
