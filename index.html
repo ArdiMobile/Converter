@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+  <title>Galmee – Multi Device Mockup Generator | Live Preview on Apple Frames</title>
+  <meta name="description" content="Galmee: Instantly preview any website or design on real iMac, MacBook, iPad & iPhone frames. Drag, customize & download. Free & powerful mockup generator." />
+  <meta name="keywords" content="mockup generator, multi device, website preview, apple frames, imac, macbook, ipad, iphone, galmee, design mockup" />
+  <meta name="theme-color" content="#002611" />
+  <meta property="og:title" content="Galmee – Multi Device Mockup Generator" />
+  <meta property="og:description" content="Stunning mockups with real Apple frames. Preview any URL or upload design." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://galmee.com/multi-mockup/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700;1,800;1,900&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #009959;
+      --primary-dark: #007a47;
+      --primary-light: #e6f5ee;
+      --gold: #FEC601;
+      --gold-dark: #e6b300;
+      --gold-light: #fff9e6;
+      --dark: #002611;
+      --white: #FFFFFF;
+      --text: #002611;
+      --text-secondary: #4a6b56;
+      --border: #d4e6da;
+      --shadow: 0 2px 4px rgba(0,38,17,0.06);
+      --shadow-md: 0 4px 16px rgba(0,38,17,0.1);
+      --shadow-lg: 0 8px 32px rgba(0,38,17,0.15);
+      --shadow-xl: 0 20px 40px rgba(0,38,17,0.2);
+      --radius-sm: 8px;
+      --radius: 14px;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --radius-2xl: 32px;
+      --transition-fast: 150ms ease;
+      --transition-base: 250ms ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #f5f8f6;
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: inherit; }
+    input { font-family: inherit; }
+
+    /* ========== HEADER ========== */
+    .header {
+      background: var(--dark);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,38,17,0.3);
+    }
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+    }
+    .logo-text {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 26px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--gold) 0%, #ffe680 50%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .logo-dot {
+      color: var(--primary);
+      -webkit-text-fill-color: var(--primary);
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .menu-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      color: var(--gold);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all var(--transition-fast);
+    }
+    .menu-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+.watermark{
+  font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 16px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--gold) 0%, #ffe680 50%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+}
+    /* Drawer */
+    .drawer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,38,17,0.6);
+      z-index: 2000;
+    }
+    .drawer-overlay.show { display: block; }
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 300px;
+      max-width: 85vw;
+      height: 100vh;
+      background: var(--white);
+      z-index: 2001;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+      box-shadow: -4px 0 30px rgba(0,38,17,0.2);
+    }
+    .drawer.show { right: 0; }
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px;
+      border-bottom: 2px solid var(--primary-light);
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      z-index: 10;
+    }
+    .drawer-header img {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+    }
+    .drawer-header .drawer-brand {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .drawer-header .drawer-brand span {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 22px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--gold) 0%, #ffe680 50%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .drawer-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      background: #f0f2f5;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      transition: all var(--transition-fast);
+    }
+    .drawer-close:hover { background: #e74c3c; color: #fff; }
+    .drawer-menu { padding: 8px 12px; }
+    .drawer-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      color: var(--text);
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      font-size: 13px;
+      margin-bottom: 2px;
+      border: 2px solid transparent;
+      transition: all 0.15s ease;
+    }
+    .drawer-menu a:hover,
+    .drawer-menu a.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+    .drawer-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 14px;
+    }
+    .drawer-section-title {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      padding: 8px 14px 4px;
+      font-weight: 700;
+    }
+
+    /* ========== MAIN CONTENT ========== */
+    .main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
+
+    /* ========== SPLIT HERO ========== */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .hero-mockup-side { position: relative; }
+    .hero-mockup-side .mockup-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-mockup-side .mockup-label::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+    .mockup-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .inner-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/10;
+      max-height: 480px;
+      background: var(--bg-color, #eef1f1);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      transition: background var(--transition-base);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .desktop-wrapper, .mac-wrapper, .ipad-wrapper, .iphone-wrapper {
+      position: absolute;
+      cursor: grab;
+      user-select: none;
+    }
+    .desktop-wrapper:active, .mac-wrapper:active, .ipad-wrapper:active, .iphone-wrapper:active {
+      cursor: grabbing;
+    }
+    .frame-container {
+      position: relative;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      pointer-events: none;
+    }
+    .screen-overlay { position: absolute; overflow: hidden; background: #007a47; }
+    .frame-desktop { width: 400px; height: 382px; background-image: url('https://webmockupgenerator.com/images/desktop-frame.png'); }
+    .screen-desktop { top: 12.5%; left: 5%; width: 90%; height: 56%; border-radius: 2px; }
+    .frame-macbook { width: 330px; height: 245px; background-image: url('https://webmockupgenerator.com/images/laptop-frame.png'); }
+    .screen-macbook { top: 14.5%; left: 12%; width: 75.5%; height: 66%; border-radius: 3px; }
+    .frame-ipad { width: 140px; height: 194px; background-image: url('https://webmockupgenerator.com/images/tablet-frame.png'); }
+    .screen-ipad { top: 6%; left: 8.5%; width: 85%; height: 84%; border-radius: 4px; }
+    .frame-iphone { width: 78px; height: 155px; background-image: url('https://webmockupgenerator.com/images/mobile-frame.png'); }
+    .screen-iphone { top: 4.3%; left: 8%; width: 84%; height: 91.5%; border-radius: 6px; }
+    .screen-content {
+      width:100%; height:100%;
+      background-size: cover; background-position: top center; background-repeat: no-repeat;
+    }
+    .screen-content.empty {
+      display: flex; align-items: center; justify-content: center;
+      font-size:0.5rem; font-weight:600; color: var(--text-secondary);
+      background: rgba(238,241,238,0.5);
+    }
+    .larger-mockups .frame-desktop { width: 520px; height: 498px; }
+    .larger-mockups .frame-macbook { width: 440px; height: 340px; }
+    .larger-mockups .frame-ipad { width: 225px; height: 278px; }
+    .larger-mockups .frame-iphone { width: 132px; height: 233px; }
+    .debug-mode .screen-overlay {
+      outline: 2px dashed var(--primary) !important;
+      background: rgba(0,153,89,0.08) !important;
+    }
+
+    /* Right side */
+    .hero-content-side { padding-left: 0.5rem; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+      margin-bottom: 1.25rem;
+      border: 1px solid rgba(0,153,89,0.2);
+    }
+    .hero-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.75rem;
+      line-height: 1.15;
+    }
+    .hero-title span { color: var(--primary); }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.75rem;
+      line-height: 1.6;
+    }
+
+    /* Input cards */
+    .input-cards-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .input-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow);
+      border: 1.5px solid var(--border);
+      transition: all var(--transition-base);
+    }
+    .input-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+    .input-card .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .input-card .card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .input-card .card-icon.url-icon { background: var(--primary-light); color: var(--primary); }
+    .input-card .card-icon.upload-icon { background: var(--gold-light); color: var(--gold-dark); }
+    .input-card .card-title { font-weight: 700; font-size: 0.95rem; color: var(--dark); }
+    .input-card .card-subtitle { font-size: 0.75rem; color: var(--text-secondary); }
+    .input-card .input-row { display: flex; gap: 0.75rem; align-items: center; }
+    .input-card input[type="url"] {
+      flex: 1;
+      padding: 0.7rem 1rem;
+      border-radius: 2.5rem;
+      border: 1.5px solid var(--border);
+      font-family: inherit;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color var(--transition-fast);
+    }
+    .input-card input[type="url"]:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0,153,89,0.08);
+    }
+    .input-card input[type="file"] { flex: 1; font-size: 0.8rem; color: var(--text-secondary); }
+    .btn-generate, .btn-upload {
+      border: none;
+      border-radius: 2.5rem;
+      padding: 0.7rem 1.4rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-generate {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 16px rgba(0,153,89,0.3);
+    }
+    .btn-generate:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0,153,89,0.4);
+    }
+    .btn-upload {
+      background: var(--gold);
+      color: var(--dark);
+      box-shadow: 0 4px 16px rgba(254,198,1,0.3);
+    }
+    .btn-upload:hover {
+      background: var(--gold-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(254,198,1,0.4);
+    }
+
+    /* Settings */
+    .settings-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .setting-group {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .color-swatch {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      box-shadow: var(--shadow);
+      transition: all var(--transition-fast);
+    }
+    .color-swatch:hover { transform: scale(1.2); }
+    .color-swatch.active { border-color: var(--primary); transform: scale(1.1); }
+    .toggle-switch { position: relative; display: inline-block; width: 36px; height: 20px; }
+    .toggle-switch input { opacity:0; width:0; height:0; }
+    .toggle-slider {
+      position: absolute; cursor: pointer; top:0; left:0; right:0; bottom:0;
+      background-color: #c0d6c0; border-radius: 20px; transition: var(--transition-fast);
+    }
+    .toggle-slider:before {
+      position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px;
+      background-color: white; border-radius: 50%; transition: var(--transition-fast);
+    }
+    input:checked + .toggle-slider { background: var(--primary); }
+    input:checked + .toggle-slider:before { transform: translateX(16px); }
+    .btn-sm {
+      padding: 0.45rem 1rem;
+      border-radius: 2rem;
+      border: none;
+      font-weight: 600;
+      font-size: 0.75rem;
+      cursor: pointer;
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 2px 10px rgba(0,153,89,0.25);
+      transition: all var(--transition-fast);
+    }
+    .btn-sm:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    #mockupName {
+      width: 150px;
+      padding: 0.45rem 0.65rem;
+      border-radius: 2rem;
+      border: 1.5px solid var(--border);
+      font-size: 0.75rem;
+      outline: none;
+      transition: border-color var(--transition-fast);
+    }
+    #mockupName:focus { border-color: var(--primary); }
+
+    /* ========== TABS SECTION ========== */
+    .tabs-section {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .tabs-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 0 16px;
+      scrollbar-width: none;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+    .tabs-scroll::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      padding: 10px 20px;
+      border: none;
+      background: #fff;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow);
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 4px 16px rgba(0,153,89,0.3);
+    }
+    .tab-btn:hover:not(.active) {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .tab-panel {
+      display: none;
+      animation: slideUp 0.3s ease;
+    }
+    .tab-panel.active { display: block; }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Tab content styles */
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .card-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--primary-light);
+    }
+    .card-title i { color: var(--primary); }
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px;
+      background: #fff;
+      border-radius: var(--radius);
+      margin-bottom: 8px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    .step-content strong { font-size: 14px; color: var(--dark); display: block; margin-bottom: 2px; }
+    .step-content p { font-size: 12px; color: var(--text-secondary); }
+    .faq-card {
+      background: #fff;
+      border-radius: var(--radius);
+      margin-bottom: 6px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+    .faq-question {
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .faq-card.active .faq-question { color: var(--primary); background: var(--primary-light); }
+    .faq-card.active .faq-question i { transform: rotate(180deg); }
+    .faq-answer {
+      padding: 0 14px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+    .faq-card.active .faq-answer { padding: 0 14px 14px; max-height: 300px; }
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+    }
+    .app-card {
+      background: #fff;
+      padding: 18px 12px;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+    .app-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    .app-card i { font-size: 30px; display: block; margin-bottom: 8px; }
+    .app-card span { font-size: 12px; font-weight: 600; color: var(--dark); }
+
+    /* Floating toggles */
+    .floating-device-toggles {
+      position: fixed;
+      right: 1.5rem;
+      top: 40%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction:column;
+      gap: 1.5rem;
+      z-index: 999;
+      background:transparent;
+      backdrop-filter: blur(12px);
+      padding: 0.3rem 1rem;
+      border-radius: 3rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+    .floating-device-toggles .checkbox-icon {
+      cursor: pointer;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      font-size: 14px;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+    }
+    .floating-device-toggles .checkbox-down {
+      cursor: pointer;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: red;
+      border: 1.5px solid var(--border);
+      font-size: 14px;
+      transition: all var(--transition-fast);
+      text-decoration: none;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+    .floating-device-toggles .checkbox-icon:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      transform: scale(1.1);
+    }
+    .floating-device-toggles .checkbox-icon.active {
+      background: var(--primary);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(0,153,89,0.3);
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      background: var(--dark);
+      padding: 28px 16px;
+      text-align: center;
+      margin-top: 36px;
+      color: rgba(255,255,255,0.7);
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      margin-bottom: 12px;
+    }
+    .footer-logo img { width: 24px; height: 24px; border-radius: 6px; }
+    .footer-logo span {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--gold);
+    }
+    .footer-logo .logo-dot {
+      color: var(--primary);
+      -webkit-text-fill-color: var(--primary);
+      font-size: 10px;
+    }
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .social-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: all 0.2s ease;
+    }
+    .social-icon:hover { transform: translateY(-2px); }
+    .social-icon.fb:hover { background: #1877f2; color: #fff; border-color: #1877f2; }
+    .social-icon.ig:hover { background: linear-gradient(135deg,#f09433,#dc2743,#bc1888); color: #fff; }
+    .social-icon.telegram:hover { background: #0088cc; color: #fff; border-color: #0088cc; }
+    .social-icon.github:hover { background: #333; color: #fff; border-color: #333; }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 500; }
+    .footer-links a:hover { color: var(--gold); }
+    .copyright {
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .copyright strong { color: var(--gold); }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .mockup-wrapper{
+          height: 600px;
+    overflow: hidden;
+  }
+  .inner-wrapper {
+    aspect-ratio: auto !important;
+    transform: scale(0.9);
+    transform-origin: top center;
+    width: 145%;
+    margin: 0 -22.5%;
+    height: 800px;
+    max-height: 1100px;
+  }
+      .hero-split { gap: 2rem; }
+      .hero-title { font-size: 2rem; }
+      .frame-desktop { width: 340px; height: 324px; }
+      .frame-macbook { width: 280px; height: 208px; }
+      .frame-ipad { width: 120px; height: 166px; }
+      .frame-iphone { width: 66px; height: 131px; }
+    }
+
+@media (max-width: 768px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .hero-mockup-side { 
+    order: 2; 
+    margin-bottom: 0;
+    overflow: hidden;
+  }
+  .hero-content-side { order: 1; padding-left: 0; }
+  .hero-title { font-size: 1.7rem; }
+  
+  /* DOUBLED HEIGHT for tablet - was 500px, now 1000px */
+  .mockup-wrapper {
+    height: 500px;
+    overflow: hidden;
+  }
+  .inner-wrapper {
+    aspect-ratio: auto !important;
+    transform: scale(0.8);
+    transform-origin: top center;
+    width: 145%;
+    margin: 0 -22.5%;
+    height: 700px;
+    max-height: 1000px;
+  }
+  
+  .floating-device-toggles {
+    flex-direction: row;
+    top: auto;
+    bottom: 1rem;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 0.4rem 0.8rem;
+    gap: 0.5rem;
+    border-radius: 2.5rem;
+  }
+  .floating-device-toggles .checkbox-icon { width: 32px; height: 32px; font-size: 13px; }
+  .apps-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .hero-split { gap: 0.5rem; }
+  .hero-title { font-size: 1.4rem; }
+  .floating-device-toggles {
+    flex-direction: row;
+    top: auto;
+    bottom: 1rem;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 0.4rem 0.8rem;
+    gap: 0.9rem;
+    border-radius: 2.5rem;
+  }
+  .mockup-wrapper {
+    height: 400px;
+    overflow: hidden;
+  }
+  .inner-wrapper {
+    aspect-ratio: auto !important;
+    transform: scale(0.6);
+    transform-origin: top center;
+    width: 180%;
+    margin: 0 -40%;
+    height: 600px;
+    max-height: 900px;
+  }
+  
+  .input-card input[type="url"] {
+    padding: 0.7rem 1rem;
+  }
+  .input-card .input-row { flex-direction: column; }
+  .btn-generate, .btn-upload { width: 100%; justify-content: center; }
+  .floating-device-toggles .checkbox-down { width: 32px; height: 32px; font-size: 13px; }
+  .apps-grid { grid-template-columns: repeat(2, 1fr); }
+  .tab-btn { font-size: 10px; padding: 7px 12px; }
+}
+  </style>
+</head>
+<body>
+<!-- ========== HEADER ========== -->
+<header class="header" id="siteHeader">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <img src="https://raw.githubusercontent.com/ArdiMobile/FbDownApp/main/images/Galmee%20icon.png" alt="Galmee" class="logo-icon">
+      <span class="logo-text">Galmee</span><span class="logo-dot">.MOCKUP</span>
+    </a>
+    <button class="menu-btn" onclick="toggleDrawer()" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<!-- ========== DRAWER ========== -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="toggleDrawer()"></div>
+<nav class="drawer" id="drawer">
+  <div class="drawer-header">
+    <div class="drawer-brand">
+      <img src="https://raw.githubusercontent.com/ArdiMobile/FbDownApp/main/images/Galmee%20icon.png" alt="Galmee">
+      <span>Galmee</span>
+    </div>
+    <button class="drawer-close" onclick="toggleDrawer()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="drawer-menu">
+    <a href="#" class="active" onclick="switchMainTab(event,'tab-home'); toggleDrawer();"><i class="fas fa-home"></i> Home</a>
+    <a href="#" onclick="switchMainTab(event,'tab-steps'); toggleDrawer();"><i class="fas fa-download"></i> Steps</a>
+    <a href="#" onclick="switchMainTab(event,'tab-faq'); toggleDrawer();"><i class="fas fa-question-circle"></i> FAQ</a>
+    <a href="#" onclick="switchMainTab(event,'tab-apps'); toggleDrawer();"><i class="fas fa-th-large"></i> More Apps</a>
+    <div class="drawer-divider"></div>
+    <a href="#"><i class="fas fa-user"></i> About</a>
+    <a href="#"><i class="fas fa-shield-alt"></i> Privacy</a>
+    <a href="#"><i class="fas fa-file-contract"></i> Terms</a>
+    <a href="mailto:hello@galmee.com"><i class="fas fa-envelope"></i> Contact</a>
+  </div>
+</nav>
+
+<main class="main">
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero-split" id="generator">
+    <!-- LEFT: Mockup Display -->
+    <div class="hero-mockup-side">
+      <div class="mockup-label">Live Preview</div>
+      <div class="mockup-wrapper">
+        <div class="inner-wrapper" id="innerWrapper" style="--bg-color:#eef1f1;">
+          <div class="desktop-wrapper" id="desktop-wrapper" style="top:3%; left:3%;">
+            <div class="frame-container frame-desktop">
+              <div class="screen-overlay screen-desktop">
+                <div class="screen-content empty" id="desktop-screen-content"><span class="watermark">Galmee</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="mac-wrapper" id="mac-wrapper" style="top:28%; left:52%;">
+            <div class="frame-container frame-macbook">
+              <div class="screen-overlay screen-macbook">
+                <div class="screen-content empty" id="mac-screen-content"><span class="watermark">Galmee</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="ipad-wrapper" id="ipad-wrapper" style="top:45%; left:5%;">
+            <div class="frame-container frame-ipad">
+              <div class="screen-overlay screen-ipad">
+                <div class="screen-content empty" id="ipad-screen-content"><span class="watermark">Galmee</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="iphone-wrapper" id="iphone-wrapper" style="top:48%; left:58%;">
+            <div class="frame-container frame-iphone">
+              <div class="screen-overlay screen-iphone">
+                <div class="screen-content empty" id="iphone-screen-content"><span class="watermark">Galmee</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Content & Inputs -->
+    <div class="hero-content-side">
+      <div class="hero-badge">
+        <i class="fas fa-bolt"></i> Free & No Watermark
+      </div>
+      <h1 class="hero-title">Create <span>stunning mockups</span> without design software</h1>
+      <p class="hero-desc">Preview any website or design on real iMac, MacBook, iPad & iPhone frames. Drag to reposition, customize & download instantly.</p>
+
+      <div class="input-cards-stack">
+        <div class="input-card">
+          <div class="card-header">
+            <div class="card-icon url-icon"><i class="fas fa-link"></i></div>
+            <div>
+              <div class="card-title">Website URL</div>
+              <div class="card-subtitle">Enter any website to preview</div>
+            </div>
+          </div>
+          <div class="input-row">
+            <input type="url" id="url" placeholder="https://yourwebsite.com" value="" />
+            <button class="btn-generate" onclick="generateMockup()"><i class="fas fa-bolt"></i> Generate</button>
+          </div>
+        </div>
+
+        <div class="input-card">
+          <div class="card-header">
+            <div class="card-icon upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <div>
+              <div class="card-title">Upload Design</div>
+              <div class="card-subtitle">Upload your own image or screenshot</div>
+            </div>
+          </div>
+          <div class="input-row">
+            <input type="file" id="uploadDesignInput" accept="image/*" onchange="handleUploadDesign(event)" />
+            <button class="btn-upload" onclick="document.getElementById('uploadDesignInput').click()"><i class="fas fa-upload"></i> Upload You Design</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="settings-inline">
+        <div class="setting-group">
+         BG <span class="color-swatch active" style="background:#eef1f1" onclick="setBgColor('#eef1f1', this)" title="Mist"></span>
+          <span class="color-swatch" style="background:#ffffff" onclick="setBgColor('#ffffff', this)" title="White"></span>
+          <span class="color-swatch" style="background:#f2e9da" onclick="setBgColor('#f2e9da', this)" title="Cream"></span>
+          <span class="color-swatch" style="background:#002611" onclick="setBgColor('#002611', this)" title="Dark"></span>
+          <span class="color-swatch" style="background:#009959" onclick="setBgColor('#009959', this)" title="Green"></span>
+          <span class="color-swatch" style="background:#FEC601" onclick="setBgColor('#FEC601', this)" title="Gold"></span>
+          <input type="color" id="bgColorPicker" value="#eef1f1" onchange="setBgColor(this.value)" style="width:22px;height:22px;border-radius:50%;border:0;cursor:pointer;" />
+        </div>
+        <div class="setting-group">
+          <label class="toggle-switch" style="display:none;"><input type="checkbox" id="largerToggle" onchange="toggleLargerMockups()"><span class="toggle-slider"></span></label>
+        </div>
+        <div class="setting-group">
+         Debug <label class="toggle-switch"><input type="checkbox" id="debugToggle" onchange="toggleDebugMode()"><span class="toggle-slider"></span></label>
+        </div> |
+          <span>   Rename your mockup<input type="text" id="mockupName" placeholder="Name" value="my_galmee_mockup" /></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TABS SECTION ========== -->
+  <section class="tabs-section" id="tabsSection">
+    <div class="tabs-scroll" id="tabBar">
+      <button class="tab-btn active" onclick="switchMainTab(event,'tab-home')"><i class="fas fa-home"></i> Home Page</button>
+      <button class="tab-btn" onclick="switchMainTab(event,'tab-steps')"><i class="fas fa-download"></i> Steps</button>
+      <button class="tab-btn" onclick="switchMainTab(event,'tab-faq')"><i class="fas fa-question-circle"></i> FAQ's</button>
+      <button class="tab-btn" onclick="switchMainTab(event,'tab-apps')"><i class="fas fa-th-large"></i> More Apps</button>
+    </div>
+
+    <!-- HOME TAB -->
+    <div id="tab-home" class="tab-panel active">
+      <div class="card">
+        <div class="card-title"><i class="fas fa-star"></i> Welcome to Galmee Mockup Generator</div>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.8;">
+          Galmee is the <strong>free multi-device mockup generator</strong> that lets you preview any website or design on real Apple frames. Simply enter a URL or upload your design, and see it instantly on <strong>iMac, MacBook, iPad & iPhone</strong> frames. Drag devices to reposition, customize the background, and download high-quality mockups — all for free, no registration required.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;">
+          <span style="background:var(--primary-light);color:var(--primary);padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;"><i class="fas fa-check-circle"></i> 4 Real Apple Frames</span>
+          <span style="background:var(--gold-light);color:var(--gold-dark);padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;"><i class="fas fa-check-circle"></i> Drag & Drop</span>
+          <span style="background:var(--primary-light);color:var(--primary);padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;"><i class="fas fa-check-circle"></i> Custom Backgrounds</span>
+          <span style="background:var(--gold-light);color:var(--gold-dark);padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;"><i class="fas fa-check-circle"></i> HD Download</span>
+          <span style="background:var(--primary-light);color:var(--primary);padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;"><i class="fas fa-check-circle"></i> No Watermark</span>
+          <span style="background:var(--gold-light);color:var(--gold-dark);padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;"><i class="fas fa-check-circle"></i> 100% Free</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEPS TAB -->
+    <div id="tab-steps" class="tab-panel">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Copy or Upload Your Design</strong>
+          <p>Enter a website URL or upload your design image. We support PNG, JPG, and live website screenshots.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Customize Your Mockup</strong>
+          <p>Drag devices to arrange them. Change the background color, toggle devices on/off, or switch to larger frames.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>Download in HD</strong>
+          <p>Name your file and download a high-resolution PNG image. Perfect for portfolios, presentations, and client work.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ TAB -->
+    <div id="tab-faq" class="tab-panel">
+      <div class="faq-card" onclick="this.classList.toggle('active')">
+        <div class="faq-question">Is Galmee Mockup Generator really free? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Yes! 100% free. No registration, no hidden fees, no watermarks. Generate unlimited mockups.</div>
+      </div>
+      <div class="faq-card" onclick="this.classList.toggle('active')">
+        <div class="faq-question">What devices are available? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">We offer real Apple frames: iMac (desktop), MacBook (laptop), iPad (tablet), and iPhone (mobile).</div>
+      </div>
+      <div class="faq-card" onclick="this.classList.toggle('active')">
+        <div class="faq-question">Can I upload my own design? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Absolutely! Upload any image (PNG, JPG) and it will appear on all four devices instantly.</div>
+      </div>
+      <div class="faq-card" onclick="this.classList.toggle('active')">
+        <div class="faq-question">What quality is the download? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Downloads are high-resolution 2x scale PNG images, perfect for presentations and portfolios.</div>
+      </div>
+      <div class="faq-card" onclick="this.classList.toggle('active')">
+        <div class="faq-question">Can I rearrange the devices? <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">Yes! All devices are draggable — simply click and drag them anywhere within the mockup area.</div>
+      </div>
+    </div>
+
+    <!-- MORE APPS TAB -->
+    <div id="tab-apps" class="tab-panel">
+      <div class="apps-grid">
+        <div class="app-card" onclick="alert('📱 iMac mockup — use the generator above!')">
+          <i class="fas fa-desktop" style="color:#009959;"></i>
+          <span>iMac Mockup</span>
+        </div>
+        <div class="app-card" onclick="alert('💻 MacBook mockup — use the generator above!')">
+          <i class="fas fa-laptop" style="color:#FEC601;"></i>
+          <span>MacBook Mockup</span>
+        </div>
+        <div class="app-card" onclick="alert('📲 iPad mockup — use the generator above!')">
+          <i class="fas fa-tablet-alt" style="color:#009959;"></i>
+          <span>iPad Mockup</span>
+        </div>
+        <div class="app-card" onclick="alert('📱 iPhone mockup — use the generator above!')">
+          <i class="fas fa-mobile-alt" style="color:#FEC601;"></i>
+          <span>iPhone Mockup</span>
+        </div>
+        <div class="app-card">
+          <i class="fab fa-facebook" style="color:#1877f2;"></i>
+          <span>FB Downloader</span>
+        </div>
+        <div class="app-card">
+          <i class="fab fa-instagram" style="color:#E4405F;"></i>
+          <span>IG Downloader</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="footer-logo">
+    <img src="https://raw.githubusercontent.com/ArdiMobile/FbDownApp/main/images/Galmee%20icon.png" alt="Galmee">
+    <span>Galmee</span><span class="logo-dot">.MOCKUP</span>
+  </div>
+  <div class="social-icons">
+    <a href="#" class="social-icon fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="social-icon ig" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="#" class="social-icon telegram" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+    <a href="#" class="social-icon github" target="_blank"><i class="fab fa-github"></i></a>
+  </div>
+  <div class="footer-links">
+    <a href="#">Mockup Generator</a>
+    <a href="#">Blog</a>
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+  </div>
+  <p class="copyright">2026 &copy; <strong>Galmee</strong> · Multi‑Device Mockup Generator · Made with ❤️ in Pakistan</p>
+</footer>
+
+<!-- Floating device toggles -->
+<div class="floating-device-toggles" id="checkboxContainer">
+  <span class="checkbox-icon active" id="desktopToggle" title="iMac"><i class="fas fa-desktop"></i></span>
+  <span class="checkbox-icon active" id="laptopToggle" title="MacBook"><i class="fas fa-laptop"></i></span>
+  <span class="checkbox-icon active" id="tabletToggle" title="iPad"><i class="fas fa-tablet-alt"></i></span>
+  <span class="checkbox-icon active" id="mobileToggle" title="iPhone"><i class="fas fa-mobile-alt"></i></span>
+  <span class="checkbox-down" id="downloadFloating" title="Download" onclick="downloadMockup()"><i class="fas fa-download"></i></span>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+  // ========== DRAWER TOGGLE ==========
+  function toggleDrawer() {
+    document.getElementById('drawer').classList.toggle('show');
+    document.getElementById('drawerOverlay').classList.toggle('show');
+  }
+
+  // ========== TAB SWITCHING ==========
+  function switchMainTab(event, tabId) {
+    event.preventDefault();
+    // Update tab buttons
+    document.querySelectorAll('#tabBar .tab-btn').forEach(btn => btn.classList.remove('active'));
+    if(event.target.closest('.tab-btn')) {
+      event.target.closest('.tab-btn').classList.add('active');
+    }
+    // Update drawer links
+    document.querySelectorAll('.drawer-menu a').forEach(link => link.classList.remove('active'));
+    const drawerLink = document.querySelector(`.drawer-menu a[onclick*="${tabId}"]`);
+    if(drawerLink) drawerLink.classList.add('active');
+    // Show selected panel
+    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    // Scroll to tabs on mobile
+    if(window.innerWidth <= 768) {
+      document.getElementById('tabsSection').scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // ========== MOCKUP FUNCTIONS ==========
+  function generateMockup() {
+    let url = document.getElementById('url').value.trim();
+    if(!url) return alert('Please enter a valid website URL');
+    let formatted = url.startsWith('http') ? url : 'https://' + url;
+    ['desktop','mac','ipad','iphone'].forEach(id => {
+      let w = id==='desktop'?1440:id==='mac'?1280:id==='ipad'?768:390,
+          h = id==='desktop'?900:id==='mac'?800:id==='ipad'?1024:780;
+      loadScreenshot(id, formatted, w, h);
+    });
+  }
+
+  function loadScreenshot(id, url, w, h) {
+    let scr = document.getElementById(id + '-screen-content');
+    scr.classList.remove('empty'); scr.textContent = '';
+    let img = new Image(); img.crossOrigin = 'anonymous';
+    img.onload = () => { scr.style.backgroundImage = `url(${img.src})`; scr.classList.remove('empty'); };
+    img.onerror = () => {
+      let fb = new Image(); fb.crossOrigin = 'anonymous';
+      fb.onload = () => { scr.style.backgroundImage = `url(${fb.src})`; };
+      fb.onerror = () => { scr.classList.add('empty'); scr.textContent = '⚠️ Failed'; };
+      fb.src = `https://image.thum.io/get/width/${w}/crop/${h}/${url}`;
+    };
+    img.src = `https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&embed=screenshot.url&viewport.width=${w}&viewport.height=${h}&deviceScale=2`;
+  }
+
+  function handleUploadDesign(e) {
+    let file = e.target.files[0]; if(!file) return;
+    let reader = new FileReader();
+    reader.onload = ev => {
+      let data = ev.target.result;
+      ['desktop','mac','ipad','iphone'].forEach(id => {
+        let el = document.getElementById(id + '-screen-content');
+        el.style.backgroundImage = `url(${data})`; el.classList.remove('empty'); el.textContent = '';
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function toggleLargerMockups() {
+    document.getElementById('innerWrapper').classList.toggle('larger-mockups', document.getElementById('largerToggle').checked);
+  }
+
+  function setBgColor(col, el) {
+    document.getElementById('innerWrapper').style.backgroundColor = col;
+    document.getElementById('bgColorPicker').value = col;
+    document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+    if(el) el.classList.add('active');
+  }
+
+  function toggleDebugMode() {
+    document.getElementById('innerWrapper').classList.toggle('debug-mode', document.getElementById('debugToggle').checked);
+  }
+
+  function downloadMockup() {
+    let w = document.getElementById('innerWrapper');
+    let dbg = document.getElementById('debugToggle').checked;
+    if(dbg) w.classList.remove('debug-mode');
+    html2canvas(w, {
+      backgroundColor: document.getElementById('bgColorPicker').value,
+      scale: 2,
+      useCORS: true
+    }).then(canvas => {
+      if(dbg) w.classList.add('debug-mode');
+      let name = document.getElementById('mockupName').value || 'my_galmee-mockup';
+      let link = document.createElement('a');
+      link.download = name.replace(/\s+/g, '-') + '.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    }).catch(() => {
+      alert('Something went wrong. Please try again.');
+      if(dbg) w.classList.add('debug-mode');
+    });
+  }
+
+  // Draggable
+  $(function() {
+    $(".desktop-wrapper, .mac-wrapper, .ipad-wrapper, .iphone-wrapper").draggable({
+      containment: "#innerWrapper", scroll: false, cursor: "grabbing"
+    });
+  });
+
+  // Floating toggles
+  function setupFloatingToggle(iconId, wrapperId) {
+    const icon = document.getElementById(iconId);
+    const wrapper = document.getElementById(wrapperId);
+    if(!icon || !wrapper) return;
+    icon.addEventListener('click', (e) => {
+      e.preventDefault();
+      if(wrapper.style.display === 'none') {
+        wrapper.style.display = 'block'; icon.classList.add('active');
+      } else {
+        wrapper.style.display = 'none'; icon.classList.remove('active');
+      }
+    });
+  }
+
+  setupFloatingToggle('desktopToggle', 'desktop-wrapper');
+  setupFloatingToggle('laptopToggle', 'mac-wrapper');
+  setupFloatingToggle('tabletToggle', 'ipad-wrapper');
+  setupFloatingToggle('mobileToggle', 'iphone-wrapper');
+
+  console.log('✅ Galmee Mockup Generator — Ready with Tabs');
+  console.log('🏠 Home | 📋 Steps | ❓ FAQ | 📱 More Apps');
+</script>
+</body>
+</html>
