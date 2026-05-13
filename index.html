@@ -8,6 +8,220 @@
   <link rel="stylesheet" href="/static/style.css">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+  <style>*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f3f5f4;
+  color:#111;
+}
+
+/* HEADER */
+
+.topbar{
+  background:#003d13;
+  padding:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+}
+
+.g{
+  width:50px;
+  height:50px;
+  background:#d9b300;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#003d13;
+  font-size:34px;
+  font-weight:bold;
+}
+
+.name{
+  color:#f7d54a;
+  font-size:42px;
+  margin-left:10px;
+  font-style:italic;
+  font-weight:bold;
+}
+
+.menu-btn{
+  width:60px;
+  height:60px;
+  border:none;
+  border-radius:50%;
+  background:#0c4f20;
+  color:#ffd500;
+  font-size:25px;
+}
+
+/* HERO */
+
+.hero{
+  background:linear-gradient(135deg,#014b17,#002d0e);
+  margin:20px;
+  border-radius:30px;
+  padding:30px 20px;
+  text-align:center;
+  color:#fff;
+}
+
+.hero h1{
+  font-size:38px;
+  margin-bottom:15px;
+}
+
+.subtitle{
+  color:#d4d4d4;
+  margin-bottom:30px;
+}
+
+/* UPLOAD */
+
+.upload-box{
+  background:#fff;
+  border-radius:25px;
+  padding:25px;
+  color:#111;
+}
+
+.upload-icon{
+  width:90px;
+  height:90px;
+  margin:auto;
+  border-radius:50%;
+  background:#00a651;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:38px;
+}
+
+.select-btn{
+  margin-top:20px;
+  background:#111;
+  color:#fff;
+  border:none;
+  padding:14px 25px;
+  border-radius:12px;
+  font-size:16px;
+}
+
+#fileName{
+  margin-top:18px;
+  color:#555;
+  word-break:break-word;
+}
+
+/* PROGRESS */
+
+.progress-area{
+  margin-top:25px;
+  display:none;
+}
+
+.progress-bar{
+  width:100%;
+  height:14px;
+  background:#ddd;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress-fill{
+  width:0%;
+  height:100%;
+  background:#00a651;
+  transition:0.3s;
+}
+
+#progressText{
+  margin-top:10px;
+  color:#444;
+}
+
+/* CONVERT */
+
+.convert-btn{
+  width:100%;
+  margin-top:25px;
+  background:#00a651;
+  color:#fff;
+  border:none;
+  padding:16px;
+  border-radius:16px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+/* RESULT */
+
+#result{
+  margin-top:25px;
+}
+
+.download-btn{
+  display:block;
+  width:100%;
+  background:#111;
+  color:#fff;
+  text-decoration:none;
+  padding:16px;
+  border-radius:14px;
+  margin-top:15px;
+  font-weight:bold;
+}
+
+/* FEATURES */
+
+.features{
+  padding:20px;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:15px;
+}
+
+.feature-card{
+  background:#fff;
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 5px 15px rgba(0,0,0,0.06);
+}
+
+.feature-card i{
+  color:#00a651;
+  font-size:32px;
+  margin-bottom:12px;
+}
+
+@media(min-width:768px){
+
+  .hero{
+    max-width:850px;
+    margin:auto;
+    margin-top:40px;
+  }
+
+  .features{
+    max-width:850px;
+    margin:auto;
+    grid-template-columns:repeat(3,1fr);
+  }
+
+}</style>
 </head>
 <body>
 
@@ -95,7 +309,83 @@
 
 </section>
 
-<script src="/static/script.js"></script>
+<script>const fileInput = document.getElementById("fileInput");
+const fileName = document.getElementById("fileName");
+
+const progressArea = document.getElementById("progressArea");
+const progressFill = document.getElementById("progressFill");
+const progressText = document.getElementById("progressText");
+
+const result = document.getElementById("result");
+
+function openPicker(){
+    fileInput.click();
+}
+
+fileInput.addEventListener("change", () => {
+
+    if(fileInput.files.length){
+        fileName.innerHTML = fileInput.files[0].name;
+    }
+
+});
+
+async function uploadVideo(){
+
+    if(!fileInput.files.length){
+        alert("Select a video first");
+        return;
+    }
+
+    const file = fileInput.files[0];
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    progressArea.style.display = "block";
+
+    progressFill.style.width = "15%";
+    progressText.innerHTML = "Uploading video...";
+
+    try{
+
+        const response = await fetch("/api/upload", {
+            method:"POST",
+            body:formData
+        });
+
+        progressFill.style.width = "70%";
+        progressText.innerHTML = "Converting to MP3...";
+
+        const data = await response.json();
+
+        if(data.status === "success"){
+
+            progressFill.style.width = "100%";
+            progressText.innerHTML = "Done";
+
+            result.innerHTML = `
+                <a href="${data.download}" class="download-btn">
+                    <i class="fa-solid fa-download"></i>
+                    Download MP3
+                </a>
+            `;
+
+        }else{
+
+            progressText.innerHTML = "Conversion failed";
+
+        }
+
+    }catch(err){
+
+        console.log(err);
+
+        progressText.innerHTML = "Server error";
+
+    }
+
+}</script>
 
 </body>
 </html>
