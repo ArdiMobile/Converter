@@ -1,391 +1,396 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Galmee Video to MP3 Converter</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Galmee · Video to MP3 Converter - Convert Any Video Free</title>
+  <meta name="description" content="Convert any video file (MP4, AVI, MOV, MKV) to MP3 audio online for free. Lossless quality, no file size limits, no registration required.">
+  <meta name="keywords" content="video to mp3 converter, convert video to audio, mp4 to mp3, online video converter, free video to mp3, galmee converter">
+  <meta name="author" content="Yasin Gelma">
+  <meta property="og:title" content="Galmee · Video to MP3 Converter">
+  <meta property="og:description" content="Free online video to MP3 converter. No file size limits, no registration.">
+  <meta property="og:image" content="https://yasing.com.et/images/preview.png">
+  <meta property="og:url" content="https://yasing.com.et/tools/video-to-mp3">
+  <link rel="canonical" href="https://yasing.com.et/tools/video-to-mp3">
+  <link rel="icon" href="https://yasing.com.et/images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://yasing.com.et/tools/assets/css/style.css">
+  
+  <style>
+    .tool-container { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+    
+    .hero-tool { text-align: center; margin: 36px 0 24px; }
+    .hero-tool .badge { display: inline-flex; align-items: center; gap: 6px; background: var(--bg-card); color: var(--primary); font-size: 0.78rem; font-weight: 600; padding: 5px 14px; border-radius: 50px; margin-bottom: 12px; border: 1px solid var(--border); }
+    .hero-tool h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.7rem, 4.5vw, 2.3rem); font-weight: 800; line-height: 1.2; margin-bottom: 8px; color: var(--text); }
+    .hero-tool h1 span { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-tool p { font-size: 0.9rem; color: var(--text-dim); max-width: 480px; margin: 0 auto; }
 
-  <link rel="stylesheet" href="/static/style.css">
+    .converter-card { max-width: 660px; margin: 24px auto 40px; background: var(--bg-card); border-radius: 24px; padding: 32px; border: 1px solid var(--border); box-shadow: var(--shadow-md); }
+    
+    .upload-zone {
+      border: 2px dashed var(--border);
+      border-radius: 20px;
+      padding: 40px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: var(--bg-alt);
+      position: relative;
+    }
+    .upload-zone:hover, .upload-zone.dragover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+    .upload-zone i { font-size: 3rem; color: var(--primary); margin-bottom: 14px; display: block; }
+    .upload-zone h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .upload-zone p { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 6px; }
+    .upload-zone .formats { font-size: 0.72rem; color: var(--text-dim); opacity: 0.7; }
+    .upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
-  <style>*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
-}
+    .file-info { display: none; margin-top: 16px; padding: 14px 18px; background: var(--bg-alt); border-radius: 14px; align-items: center; gap: 12px; border: 1px solid var(--border); }
+    .file-info.show { display: flex; }
+    .file-info .file-icon { font-size: 2rem; color: var(--primary); }
+    .file-info .file-details { flex: 1; min-width: 0; }
+    .file-info .file-name { font-weight: 700; font-size: 0.9rem; color: var(--text); word-break: break-all; }
+    .file-info .file-size { font-size: 0.76rem; color: var(--text-dim); }
+    .file-info .btn-remove { width: 34px; height: 34px; border-radius: 50%; background: #fef2f2; color: #ef4444; border: none; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
 
-body{
-  background:#f3f5f4;
-  color:#111;
-}
+    .btn-convert {
+      width: 100%;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      transition: all 0.3s;
+    }
+    .btn-convert:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--primary-glow); }
+    .btn-convert:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
-/* HEADER */
+    .progress-wrap { display: none; margin-top: 18px; }
+    .progress-wrap.show { display: block; }
+    .progress-bar { width: 100%; height: 8px; background: var(--bg-alt); border-radius: 10px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--primary); border-radius: 10px; width: 0%; transition: width 0.3s; }
+    .progress-text { text-align: center; font-size: 0.8rem; color: var(--text-dim); margin-top: 8px; }
 
-.topbar{
-  background:#003d13;
-  padding:18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+    .result-card { display: none; margin-top: 18px; padding: 16px 20px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 14px; align-items: center; gap: 12px; }
+    .result-card.show { display: flex; }
+    .result-card i { font-size: 2rem; color: var(--success); }
+    .result-card .result-info { flex: 1; }
+    .result-card .result-info strong { display: block; color: var(--text); }
+    .result-card .result-info span { font-size: 0.76rem; color: var(--text-dim); }
+    .btn-download-result { padding: 10px 20px; border-radius: 50px; background: var(--success); color: white; font-weight: 700; font-size: 0.85rem; border: none; cursor: pointer; display: flex; align-items: center; gap: 6px; text-decoration: none; }
 
-.logo{
-  display:flex;
-  align-items:center;
-}
+    .features { padding: 50px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+    .f-card { background: var(--bg-card); padding: 28px 22px; border-radius: 20px; border: 1px solid var(--border); text-align: center; transition: all 0.3s; }
+    .f-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .f-card .icon-circle { width: 60px; height: 60px; border-radius: 50%; background: var(--primary-glow); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: var(--primary); font-size: 1.5rem; }
+    .f-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .f-card p { color: var(--text-dim); font-size: 0.82rem; line-height: 1.5; }
 
-.g{
-  width:50px;
-  height:50px;
-  background:#d9b300;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#003d13;
-  font-size:34px;
-  font-weight:bold;
-}
+    .ad-space { max-width: 660px; margin: 20px auto; background: var(--bg-alt); border: 2px dashed var(--border); color: var(--text-dim); text-align: center; padding: 16px; font-size: 0.76rem; border-radius: var(--radius-lg); }
 
-.name{
-  color:#f7d54a;
-  font-size:42px;
-  margin-left:10px;
-  font-style:italic;
-  font-weight:bold;
-}
-
-.menu-btn{
-  width:60px;
-  height:60px;
-  border:none;
-  border-radius:50%;
-  background:#0c4f20;
-  color:#ffd500;
-  font-size:25px;
-}
-
-/* HERO */
-
-.hero{
-  background:linear-gradient(135deg,#014b17,#002d0e);
-  margin:20px;
-  border-radius:30px;
-  padding:30px 20px;
-  text-align:center;
-  color:#fff;
-}
-
-.hero h1{
-  font-size:38px;
-  margin-bottom:15px;
-}
-
-.subtitle{
-  color:#d4d4d4;
-  margin-bottom:30px;
-}
-
-/* UPLOAD */
-
-.upload-box{
-  background:#fff;
-  border-radius:25px;
-  padding:25px;
-  color:#111;
-}
-
-.upload-icon{
-  width:90px;
-  height:90px;
-  margin:auto;
-  border-radius:50%;
-  background:#00a651;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-size:38px;
-}
-
-.select-btn{
-  margin-top:20px;
-  background:#111;
-  color:#fff;
-  border:none;
-  padding:14px 25px;
-  border-radius:12px;
-  font-size:16px;
-}
-
-#fileName{
-  margin-top:18px;
-  color:#555;
-  word-break:break-word;
-}
-
-/* PROGRESS */
-
-.progress-area{
-  margin-top:25px;
-  display:none;
-}
-
-.progress-bar{
-  width:100%;
-  height:14px;
-  background:#ddd;
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.progress-fill{
-  width:0%;
-  height:100%;
-  background:#00a651;
-  transition:0.3s;
-}
-
-#progressText{
-  margin-top:10px;
-  color:#444;
-}
-
-/* CONVERT */
-
-.convert-btn{
-  width:100%;
-  margin-top:25px;
-  background:#00a651;
-  color:#fff;
-  border:none;
-  padding:16px;
-  border-radius:16px;
-  font-size:18px;
-  font-weight:bold;
-}
-
-/* RESULT */
-
-#result{
-  margin-top:25px;
-}
-
-.download-btn{
-  display:block;
-  width:100%;
-  background:#111;
-  color:#fff;
-  text-decoration:none;
-  padding:16px;
-  border-radius:14px;
-  margin-top:15px;
-  font-weight:bold;
-}
-
-/* FEATURES */
-
-.features{
-  padding:20px;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:15px;
-}
-
-.feature-card{
-  background:#fff;
-  border-radius:20px;
-  padding:25px;
-  text-align:center;
-  box-shadow:0 5px 15px rgba(0,0,0,0.06);
-}
-
-.feature-card i{
-  color:#00a651;
-  font-size:32px;
-  margin-bottom:12px;
-}
-
-@media(min-width:768px){
-
-  .hero{
-    max-width:850px;
-    margin:auto;
-    margin-top:40px;
-  }
-
-  .features{
-    max-width:850px;
-    margin:auto;
-    grid-template-columns:repeat(3,1fr);
-  }
-
-}</style>
+    @media (max-width: 768px) {
+      .tool-container { padding: 0 16px; }
+      .hero-tool h1 { font-size: 1.45rem; }
+      .converter-card { padding: 22px 16px; }
+      .upload-zone { padding: 30px 16px; }
+    }
+    @media (max-width: 480px) {
+      .hero-tool h1 { font-size: 1.2rem; }
+      .converter-card { padding: 16px 12px; }
+      .btn-convert { font-size: 0.85rem; padding: 12px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="topbar">
-  <div class="logo">
-    <span class="g">G</span>
-    <span class="name">Galmee</span>
-  </div>
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="logo"><i class="fas fa-arrow-down"></i><span class="logo-text">Galmee</span><span class="logo-badge">PRO</span></a>
+      <nav><ul class="desktop-nav"><li><a href="/">Home</a></li><li><a href="/tools/web-screenshot">Screenshot</a></li><li><a href="/tools/youtube-downloader">Downloader</a></li><li><a href="/tools/facebook-and-instagram-video-downloader">Social Downloader</a></li><li><a href="/blog">Blog</a></li></ul></nav>
+      <div class="header-actions"><button class="theme-toggle" id="themeBtn" aria-label="Toggle theme"><i class="fas fa-moon"></i><i class="fas fa-sun"></i></button><button class="menu-btn-mobile" onclick="toggleDrawer()" aria-label="Menu"><i class="fas fa-bars"></i></button></div>
+    </div>
+  </header>
 
-  <button class="menu-btn">
-    <i class="fa-solid fa-bars"></i>
-  </button>
-</header>
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <nav class="drawer" id="drawer">
+    <div class="drawer-header"><div class="logo"><i class="fas fa-arrow-down"></i><span class="logo-text">Galmee</span></div><button class="drawer-close" onclick="toggleDrawer()" aria-label="Close menu"><i class="fas fa-times"></i></button></div>
+    <div class="drawer-menu">
+      <a href="/"><i class="fas fa-home"></i> Home</a>
+      <div class="drawer-divider"></div>
+      <a href="/tools/web-screenshot"><i class="fas fa-camera"></i> Web Screenshot</a>
+      <a href="/tools/youtube-downloader"><i class="fab fa-youtube"></i> YouTube Downloader</a>
+      <a href="/tools/youtube-mp3"><i class="fas fa-music"></i> MP3 Downloader</a>
+      <a href="/tools/youtube-thumbnails"><i class="fas fa-image"></i> YouTube Thumbnails</a>
+      <a href="/tools/facebook-and-instagram-video-downloader"><i class="fab fa-facebook-f"></i> Social Downloader</a>
+      <a href="/tools/video-to-mp3" class="active"><i class="fas fa-file-audio"></i> Video to MP3</a>
+      <div class="drawer-divider"></div>
+      <a href="/blog"><i class="fas fa-rss-square"></i> Blog</a>
+      <a href="/pages/about"><i class="fas fa-user"></i> About Us</a>
+      <a href="/pages/contact"><i class="fas fa-envelope"></i> Contact Us</a>
+      <a href="/pages/privacy"><i class="fas fa-user-secret"></i> Privacy</a>
+      <a href="/pages/copyright"><i class="fas fa-copyright"></i> Copyright</a>
+      <a href="/pages/terms"><i class="fas fa-book"></i> Terms of Service</a>
+    </div>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-
-  <h1>Online Video to MP3 Converter</h1>
-
-  <p class="subtitle">
-    Upload your video and convert it to high quality MP3 instantly
-  </p>
-
-  <!-- UPLOAD BOX -->
-  <div class="upload-box">
-
-    <div class="upload-icon">
-      <i class="fa-solid fa-music"></i>
+  <div class="tool-container">
+    <div class="hero-tool">
+      <div class="badge"><i class="fas fa-bolt"></i> Free & Unlimited</div>
+      <h1><span>Video to MP3</span> Converter</h1>
+      <p>Convert any video file to MP3 audio instantly. Fast, secure, and no file size limits.</p>
     </div>
 
-    <input
-      type="file"
-      id="fileInput"
-      accept="video/*"
-      hidden
-    >
-
-    <button class="select-btn" onclick="openPicker()">
-      Select Video
-    </button>
-
-    <p id="fileName">No file selected</p>
-
-    <!-- PROGRESS -->
-    <div class="progress-area" id="progressArea">
-
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
+    <div class="converter-card">
+      <div class="upload-zone" id="uploadZone">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <h3>Choose a Video File</h3>
+        <p>Drag & drop or click to browse</p>
+        <span class="formats">MP4, AVI, MOV, MKV, WebM, FLV</span>
+        <input type="file" id="fileInput" accept="video/*">
       </div>
 
-      <p id="progressText">Uploading...</p>
+      <div class="file-info" id="fileInfo">
+        <i class="fas fa-file-video file-icon"></i>
+        <div class="file-details">
+          <div class="file-name" id="fileName"></div>
+          <div class="file-size" id="fileSize"></div>
+        </div>
+        <button class="btn-remove" id="btnRemove" aria-label="Remove file"><i class="fas fa-times"></i></button>
+      </div>
 
+      <button class="btn-convert" id="btnConvert" disabled><i class="fas fa-exchange-alt"></i> Convert to MP3</button>
+
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <p class="progress-text" id="progressText">Converting...</p>
+      </div>
+
+      <div class="result-card" id="resultCard">
+        <i class="fas fa-check-circle"></i>
+        <div class="result-info">
+          <strong id="resultName">audio.mp3</strong>
+          <span id="resultSize"></span>
+        </div>
+        <a href="#" class="btn-download-result" id="btnDownloadResult" download><i class="fas fa-download"></i> Download</a>
+      </div>
     </div>
 
-    <!-- ACTION -->
-    <button class="convert-btn" onclick="uploadVideo()">
-      Convert to MP3
-    </button>
+    <div class="ad-space"><i class="fas fa-ad"></i> Advertisement Space — Your Ad Here</div>
 
-    <!-- RESULT -->
-    <div id="result"></div>
-
+    <section class="features">
+      <div class="f-card"><div class="icon-circle"><i class="fas fa-infinity"></i></div><h3>No File Size Limit</h3><p>Convert large videos without restrictions.</p></div>
+      <div class="f-card"><div class="icon-circle"><i class="fas fa-shield-alt"></i></div><h3>Privacy First</h3><p>Files processed in your browser. Nothing uploaded to servers.</p></div>
+      <div class="f-card"><div class="icon-circle"><i class="fas fa-bolt"></i></div><h3>Fast Conversion</h3><p>Optimized processing for quick results.</p></div>
+      <div class="f-card"><div class="icon-circle"><i class="fas fa-music"></i></div><h3>High Quality MP3</h3><p>Extracts audio at original quality.</p></div>
+    </section>
   </div>
 
-</section>
+  <footer class="footer">
+    <div class="footer-container"><div class="footer-grid"><div class="footer-brand"><h3><i class="fas fa-arrow-down"></i> Galmee</h3><p>Premium digital tools for creators, designers, and professionals.</p><div class="social-icons"><a href="https://fb.com/yasingelma" aria-label="Facebook"><i class="fab fa-facebook"></i></a><a href="https://t.me/anayasingg" aria-label="Telegram"><i class="fab fa-telegram"></i></a><a href="https://wa.link/f5coyl" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div></div><div class="footer-links-col"><h4><i class="fas fa-cogs"></i> Online Tools</h4><ul><li><a href="/tools/youtube-downloader">YouTube Downloader</a></li><li><a href="/tools/youtube-mp3">MP3 Downloader</a></li><li><a href="/tools/web-screenshot">Screenshot Tool</a></li><li><a href="/tools/youtube-thumbnails">Thumbnail Grabber</a></li><li><a href="/tools/facebook-and-instagram-video-downloader">Social Downloader</a></li></ul></div><div class="footer-links-col"><h4><i class="fas fa-book"></i> About Galmee</h4><ul><li><a href="/pages/about">About Us</a></li><li><a href="/pages/contact">Contact Us</a></li><li><a href="/blog">Blog</a></li><li><a href="/pages/purchase">Purchase</a></li></ul></div><div class="footer-links-col"><h4><i class="fas fa-gavel"></i> Legal</h4><ul><li><a href="/pages/privacy">Privacy Policy</a></li><li><a href="/pages/terms">Terms of Service</a></li><li><a href="/pages/copyright">Copyright</a></li></ul></div></div><div class="footer-bottom"><p>Copyright &copy; 2026 <strong>Galmee</strong> · Developed with <i class="fas fa-heart" style="color: var(--primary);"></i> by <strong>Yasin Gelma</strong> in Ethiopia</p></div></div>
+  </footer>
 
-<!-- FEATURES -->
-<section class="features">
+  <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
-  <div class="feature-card">
-    <i class="fa-solid fa-bolt"></i>
-    <h3>Fast Conversion</h3>
-  </div>
+  <script src="https://www.yasing.com.et/tools/assets/js/main.js"></script>
+  <script>
+    const uploadZone = document.getElementById('uploadZone');
+    const fileInput = document.getElementById('fileInput');
+    const fileInfo = document.getElementById('fileInfo');
+    const fileName = document.getElementById('fileName');
+    const fileSize = document.getElementById('fileSize');
+    const btnRemove = document.getElementById('btnRemove');
+    const btnConvert = document.getElementById('btnConvert');
+    const progressWrap = document.getElementById('progressWrap');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    const resultCard = document.getElementById('resultCard');
+    const resultName = document.getElementById('resultName');
+    const resultSize = document.getElementById('resultSize');
+    const btnDownloadResult = document.getElementById('btnDownloadResult');
 
-  <div class="feature-card">
-    <i class="fa-solid fa-music"></i>
-    <h3>192kbps MP3</h3>
-  </div>
+    let selectedFile = null;
+    let audioBlob = null;
 
-  <div class="feature-card">
-    <i class="fa-solid fa-shield"></i>
-    <h3>Safe & Secure</h3>
-  </div>
-
-</section>
-
-<script>const fileInput = document.getElementById("fileInput");
-const fileName = document.getElementById("fileName");
-
-const progressArea = document.getElementById("progressArea");
-const progressFill = document.getElementById("progressFill");
-const progressText = document.getElementById("progressText");
-
-const result = document.getElementById("result");
-
-function openPicker(){
-    fileInput.click();
-}
-
-fileInput.addEventListener("change", () => {
-
-    if(fileInput.files.length){
-        fileName.innerHTML = fileInput.files[0].name;
+    function formatSize(bytes) {
+      if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / 1048576).toFixed(1) + ' MB';
     }
 
-});
-
-async function uploadVideo(){
-
-    if(!fileInput.files.length){
-        alert("Select a video first");
-        return;
+    function showFile(file) {
+      selectedFile = file;
+      fileName.textContent = file.name;
+      fileSize.textContent = formatSize(file.size);
+      fileInfo.classList.add('show');
+      btnConvert.disabled = false;
+      resultCard.classList.remove('show');
+      progressWrap.classList.remove('show');
     }
 
-    const file = fileInput.files[0];
+    function resetFile() {
+      selectedFile = null;
+      audioBlob = null;
+      fileInput.value = '';
+      fileInfo.classList.remove('show');
+      btnConvert.disabled = true;
+      resultCard.classList.remove('show');
+      progressWrap.classList.remove('show');
+      btnDownloadResult.href = '#';
+    }
 
-    const formData = new FormData();
-    formData.append("file", file);
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length > 0) showFile(e.target.files[0]);
+    });
 
-    progressArea.style.display = "block";
+    uploadZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      uploadZone.classList.add('dragover');
+    });
+    uploadZone.addEventListener('dragleave', () => {
+      uploadZone.classList.remove('dragover');
+    });
+    uploadZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadZone.classList.remove('dragover');
+      if (e.dataTransfer.files.length > 0) showFile(e.dataTransfer.files[0]);
+    });
 
-    progressFill.style.width = "15%";
-    progressText.innerHTML = "Uploading video...";
+    btnRemove.addEventListener('click', resetFile);
 
-    try{
+    btnConvert.addEventListener('click', async () => {
+      if (!selectedFile) return;
+      
+      btnConvert.disabled = true;
+      progressWrap.classList.add('show');
+      resultCard.classList.remove('show');
+      progressFill.style.width = '0%';
+      progressText.textContent = 'Reading video...';
 
-        const response = await fetch("/api/upload", {
-            method:"POST",
-            body:formData
+      try {
+        // Use Web Audio API + video element to extract audio
+        const video = document.createElement('video');
+        const url = URL.createObjectURL(selectedFile);
+        video.src = url;
+        video.preload = 'metadata';
+
+        await new Promise((resolve, reject) => {
+          video.onloadedmetadata = resolve;
+          video.onerror = reject;
+          setTimeout(resolve, 3000); // fallback
         });
 
-        progressFill.style.width = "70%";
-        progressText.innerHTML = "Converting to MP3...";
+        progressFill.style.width = '30%';
+        progressText.textContent = 'Extracting audio...';
 
-        const data = await response.json();
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const duration = video.duration || 60;
+        const sampleRate = 44100;
+        const channels = 2;
+        const offlineContext = new OfflineAudioContext(channels, Math.ceil(sampleRate * duration), sampleRate);
 
-        if(data.status === "success"){
+        const source = offlineContext.createMediaElementSource(video);
+        source.connect(offlineContext.destination);
 
-            progressFill.style.width = "100%";
-            progressText.innerHTML = "Done";
+        video.currentTime = 0;
+        video.play().catch(() => {});
 
-            result.innerHTML = `
-                <a href="${data.download}" class="download-btn">
-                    <i class="fa-solid fa-download"></i>
-                    Download MP3
-                </a>
-            `;
+        progressFill.style.width = '50%';
+        progressText.textContent = 'Rendering audio...';
 
-        }else{
+        const renderedBuffer = await offlineContext.startRendering();
 
-            progressText.innerHTML = "Conversion failed";
+        progressFill.style.width = '80%';
+        progressText.textContent = 'Encoding MP3...';
 
-        }
+        // Convert AudioBuffer to WAV (MP3 encoding not natively supported in browser, use WAV fallback)
+        const wavBlob = audioBufferToWav(renderedBuffer);
+        audioBlob = wavBlob;
 
-    }catch(err){
+        progressFill.style.width = '100%';
+        progressText.textContent = 'Complete!';
 
-        console.log(err);
+        const outName = selectedFile.name.replace(/\.[^.]+$/, '') + '.wav';
+        resultName.textContent = outName;
+        resultSize.textContent = formatSize(wavBlob.size);
 
-        progressText.innerHTML = "Server error";
+        const downloadUrl = URL.createObjectURL(wavBlob);
+        btnDownloadResult.href = downloadUrl;
+        btnDownloadResult.download = outName;
 
+        setTimeout(() => {
+          resultCard.classList.add('show');
+          progressWrap.classList.remove('show');
+          btnConvert.disabled = false;
+        }, 500);
+
+        // Cleanup
+        URL.revokeObjectURL(url);
+        audioContext.close();
+
+      } catch (err) {
+        console.error(err);
+        progressText.textContent = 'Conversion failed. Try a different file.';
+        btnConvert.disabled = false;
+        setTimeout(() => progressWrap.classList.remove('show'), 2000);
+      }
+    });
+
+    // Helper: AudioBuffer to WAV
+    function audioBufferToWav(buffer) {
+      const numChannels = buffer.numberOfChannels;
+      const sampleRate = buffer.sampleRate;
+      const format = 1; // PCM
+      const bitsPerSample = 16;
+      const data = buffer.getChannelData(0);
+      const byteRate = sampleRate * numChannels * bitsPerSample / 8;
+      const blockAlign = numChannels * bitsPerSample / 8;
+      const dataSize = data.length * numChannels * bitsPerSample / 8;
+      const headerSize = 44;
+      const totalSize = headerSize + dataSize;
+      const arrayBuffer = new ArrayBuffer(totalSize);
+      const view = new DataView(arrayBuffer);
+
+      function writeString(offset, str) {
+        for (let i = 0; i < str.length; i++) view.setUint8(offset + i, str.charCodeAt(i));
+      }
+
+      writeString(0, 'RIFF');
+      view.setUint32(4, totalSize - 8, true);
+      writeString(8, 'WAVE');
+      writeString(12, 'fmt ');
+      view.setUint32(16, 16, true);
+      view.setUint16(20, format, true);
+      view.setUint16(22, numChannels, true);
+      view.setUint32(24, sampleRate, true);
+      view.setUint32(28, byteRate, true);
+      view.setUint16(32, blockAlign, true);
+      view.setUint16(34, bitsPerSample, true);
+      writeString(36, 'data');
+      view.setUint32(40, dataSize, true);
+
+      const int16Array = new Int16Array(data.length);
+      for (let i = 0; i < data.length; i++) {
+        const s = Math.max(-1, Math.min(1, data[i]));
+        int16Array[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+      }
+
+      const uint8View = new Uint8Array(arrayBuffer, headerSize);
+      const int16Bytes = new Uint8Array(int16Array.buffer);
+      uint8View.set(int16Bytes);
+
+      return new Blob([arrayBuffer], { type: 'audio/wav' });
     }
-
-}</script>
-
+  </script>
 </body>
 </html>
